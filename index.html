@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>REAL MADRID | ROYAL NEWS</title>
+
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#071426;color:white;font-family:Tahoma,Arial}
@@ -54,9 +55,13 @@ nav button:hover,nav button.active{background:#c9a646;color:#071426}
 .empty{text-align:center;background:#102642;padding:25px;border-radius:9px;color:#bbb;line-height:2}
 footer{text-align:center;background:#0d2038;border-top:2px solid #c9a646;padding:25px;color:#e5c66a;margin-top:35px}
 footer p{color:#aaa;font-size:12px}
-@media(max-width:500px){.player-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.player-card img{height:175px}}
+@media(max-width:500px){
+.player-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.player-card img{height:175px}
+}
 </style>
 </head>
+
 <body>
 
 <header>
@@ -84,13 +89,35 @@ footer p{color:#aaa;font-size:12px}
 <p>اخبار، مسابقات، نتایج، نقل‌وانتقالات و اطلاعات بازیکنان باشگاه.</p>
 <button class="gold" onclick="showPage('players')">مشاهده بازیکنان</button>
 </div>
+
 <h2 class="title">بخش‌های اصلی</h2>
+
 <div class="cards">
-<div class="card"><h3>اخبار</h3><p>آخرین اخبار باشگاه</p><button class="gold" onclick="showPage('news')">مشاهده</button></div>
-<div class="card"><h3>مسابقات</h3><p>برنامه مسابقات تیم</p><button class="gold" onclick="showPage('matches')">مشاهده</button></div>
-<div class="card"><h3>نتایج</h3><p>نتایج بازی‌های گذشته</p><button class="gold" onclick="showPage('results')">مشاهده</button></div>
-<div class="card"><h3>بازیکنان</h3><p>فهرست بازیکنان و اطلاعات اختصاصی</p><button class="gold" onclick="showPage('players')">مشاهده</button></div>
+<div class="card">
+<h3>اخبار</h3>
+<p>آخرین اخبار باشگاه</p>
+<button class="gold" onclick="showPage('news')">مشاهده</button>
 </div>
+
+<div class="card">
+<h3>مسابقات</h3>
+<p>برنامه مسابقات تیم</p>
+<button class="gold" onclick="showPage('matches')">مشاهده</button>
+</div>
+
+<div class="card">
+<h3>نتایج</h3>
+<p>نتایج بازی‌های گذشته</p>
+<button class="gold" onclick="showPage('results')">مشاهده</button>
+</div>
+
+<div class="card">
+<h3>بازیکنان</h3>
+<p>فهرست بازیکنان و اطلاعات اختصاصی</p>
+<button class="gold" onclick="showPage('players')">مشاهده</button>
+</div>
+</div>
+
 <div class="notice">وب‌سایت هواداری مستقل رئال مادرید</div>
 </section>
 
@@ -143,6 +170,7 @@ footer p{color:#aaa;font-size:12px}
 </footer>
 
 <script>
+
 const players=[
 ["Thibaut Courtois",1,"دروازه‌بان","COURTOIS"],
 ["Andriy Lunin",13,"دروازه‌بان","LUNIN"],
@@ -175,65 +203,145 @@ const players=[
 function showPage(id,btn){
 document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
 document.getElementById(id).classList.add("active");
+
 document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+
 if(btn)btn.classList.add("active");
+
 window.scrollTo({top:0,behavior:"smooth"});
+
 if(id==="players")renderPlayers();
 }
 
+/* آدرس تصاویر رسمی بازیکنان */
 function imageURL(code){
+
+const officialPhotos={
+
+BERNARDO:
+"https://assets.realmadrid.com/is/image/realmadrid/BERRNARDO-SILVA_POSE_1500X2000?$Desktop$=&fit=wrap&wid=600",
+
+DIOMANDE:
+"https://assets.realmadrid.com/is/image/realmadrid/YAN-DIOMANDE_POSE_1500X2000?$Desktop$=&fit=wrap&wid=600",
+
+CARLOS_ESPI:
+"https://assets.realmadrid.com/is/image/realmadrid/ESPI_POSE_1500X2000?$Desktop$=&fit=wrap&wid=600",
+
+VINI_JR:
+"https://assets.realmadrid.com/is/image/realmadrid/VINI_POSE_1500X2000?$Desktop$=&fit=wrap&wid=600",
+
+ARDA_GULER:
+"https://assets.realmadrid.com/is/image/realmadrid/ARDA_POSE_1500X2000?$Desktop$=&fit=wrap&wid=600"
+
+};
+
+if(officialPhotos[code]){
+return officialPhotos[code];
+}
+
 return "https://assets.realmadrid.com/is/image/realmadrid/"+code+"_POSE_1500X2000?$Desktop$=&fit=wrap&wid=600";
 }
 
 function renderPlayers(list=players){
+
 const area=document.getElementById("playersList");
 area.innerHTML="";
+
 list.forEach(p=>{
+
 const card=document.createElement("div");
 card.className="player-card";
+
 card.innerHTML=`
-<img src="${imageURL(p[3])}" alt="${p[0]}" onerror="this.style.display='none'">
+<img src="${imageURL(p[3])}" alt="${p[0]}" loading="lazy">
 <h3>${p[0]}</h3>
 <div class="number">${p[1]}</div>
-<p>${p[2]}</p>`;
+<p>${p[2]}</p>
+`;
+
+const img=card.querySelector("img");
+
+img.onerror=function(){
+this.onerror=null;
+this.src="https://placehold.co/600x800/183451/e5c66a?text=REAL+MADRID";
+};
+
 card.onclick=()=>openPlayer(p);
+
 area.appendChild(card);
+
 });
+
 }
 
 function searchPlayers(){
+
 const q=document.getElementById("playerSearch").value.toLowerCase().trim();
-renderPlayers(players.filter(p=>p[0].toLowerCase().includes(q)||p[2].includes(q)||String(p[1]).includes(q)));
+
+renderPlayers(
+players.filter(p=>
+p[0].toLowerCase().includes(q)||
+p[2].includes(q)||
+String(p[1]).includes(q)
+)
+);
+
 }
 
 function statCard(icon,label){
-return `<div class="stat-card">
+
+return `
+<div class="stat-card">
 <div class="stat-icon">${icon}</div>
 <div class="stat-value">—</div>
 <div class="stat-label">${label}</div>
 <div class="stat-status">در انتظار اطلاعات معتبر</div>
-</div>`;
+</div>
+`;
+
 }
 
 function openPlayer(p){
+
 document.getElementById("playerProfile").innerHTML=`
+
 <div class="profile">
+
 <div class="profile-top">
-<img src="${imageURL(p[3])}" alt="${p[0]}" onerror="this.style.display='none'">
+<img src="${imageURL(p[3])}" alt="${p[0]}" onerror="this.onerror=null;this.src='https://placehold.co/600x800/183451/e5c66a?text=REAL+MADRID'">
 <h2>${p[0]}</h2>
 <div class="number">${p[1]}</div>
 <p>${p[2]} | REAL MADRID</p>
 </div>
 
 <h3 class="title">اطلاعات بازیکن</h3>
+
 <div class="info-grid">
-<div class="info-box"><small>نام</small><strong>${p[0]}</strong></div>
-<div class="info-box"><small>شماره پیراهن</small><strong>${p[1]}</strong></div>
-<div class="info-box"><small>پست</small><strong>${p[2]}</strong></div>
-<div class="info-box"><small>باشگاه</small><strong>Real Madrid</strong></div>
+
+<div class="info-box">
+<small>نام</small>
+<strong>${p[0]}</strong>
+</div>
+
+<div class="info-box">
+<small>شماره پیراهن</small>
+<strong>${p[1]}</strong>
+</div>
+
+<div class="info-box">
+<small>پست</small>
+<strong>${p[2]}</strong>
+</div>
+
+<div class="info-box">
+<small>باشگاه</small>
+<strong>Real Madrid</strong>
+</div>
+
 </div>
 
 <h3 class="stats-title">آمار فصل جاری</h3>
+
 <div class="stats-grid">
 ${statCard("⚽","بازی‌ها")}
 ${statCard("🥅","گل‌ها")}
@@ -244,6 +352,7 @@ ${statCard("🟥","کارت قرمز")}
 </div>
 
 <h3 class="stats-title">آمار دوران حرفه‌ای</h3>
+
 <div class="stats-grid">
 ${statCard("⚽","مجموع بازی‌ها")}
 ${statCard("🥅","مجموع گل‌ها")}
@@ -254,22 +363,52 @@ ${statCard("🟥","مجموع کارت قرمز")}
 </div>
 
 <h3 class="title">اطلاعات تکمیلی</h3>
+
 <div class="info-grid">
-<div class="info-box"><small>افتخارات فردی</small><strong>در انتظار اطلاعات</strong></div>
-<div class="info-box"><small>افتخارات تیمی</small><strong>در انتظار اطلاعات</strong></div>
-<div class="info-box"><small>باشگاه‌های قبلی</small><strong>در انتظار اطلاعات</strong></div>
-<div class="info-box"><small>اطلاعات فیزیکی</small><strong>در انتظار اطلاعات</strong></div>
+
+<div class="info-box">
+<small>افتخارات فردی</small>
+<strong>در انتظار اطلاعات</strong>
 </div>
 
-<div class="notice">آمار واقعی پس از اتصال منبع معتبر نمایش داده می‌شود.</div>
+<div class="info-box">
+<small>افتخارات تیمی</small>
+<strong>در انتظار اطلاعات</strong>
+</div>
+
+<div class="info-box">
+<small>باشگاه‌های قبلی</small>
+<strong>در انتظار اطلاعات</strong>
+</div>
+
+<div class="info-box">
+<small>اطلاعات فیزیکی</small>
+<strong>در انتظار اطلاعات</strong>
+</div>
+
+</div>
+
+<div class="notice">
+آمار واقعی پس از اتصال منبع معتبر نمایش داده می‌شود.
+</div>
+
 <button class="back" onclick="backToPlayers()">بازگشت به بازیکنان</button>
-</div>`;
+
+</div>
+
+`;
+
 showPage("playerDetail");
+
 }
 
-function backToPlayers(){showPage("players");}
+function backToPlayers(){
+showPage("players");
+}
 
 renderPlayers();
+
 </script>
+
 </body>
 </html>
