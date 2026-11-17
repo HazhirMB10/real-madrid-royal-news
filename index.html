@@ -55,9 +55,27 @@ nav button:hover,nav button.active{background:#c9a646;color:#071426}
 .empty{text-align:center;background:#102642;padding:25px;border-radius:9px;color:#bbb;line-height:2}
 footer{text-align:center;background:#0d2038;border-top:2px solid #c9a646;padding:25px;color:#e5c66a;margin-top:35px}
 footer p{color:#aaa;font-size:12px}
+.refresh{display:block;margin:15px auto;background:#c9a646;color:#071426;border:0;padding:11px 20px;border-radius:7px;font-weight:bold}
+.table-wrap{overflow-x:auto;background:#102642;border-radius:10px;margin-top:15px}
+.league-table{width:100%;border-collapse:collapse;min-width:540px;text-align:center}
+.league-table th{background:#183451;color:#e5c66a;padding:13px 8px}
+.league-table td{padding:11px 7px;border-bottom:1px solid #294765;font-size:13px}
+.league-table tr.real-madrid{background:#594b20;font-weight:bold}
+.team-name{display:flex;align-items:center;justify-content:flex-start;gap:8px;text-align:right;white-space:nowrap}
+.team-name img{width:24px;height:24px;object-fit:contain}
+.match-card{background:#102642;border:1px solid #294765;border-radius:10px;padding:16px;margin:12px 0;text-align:center}
+.match-teams{display:flex;justify-content:space-around;align-items:center;gap:10px}
+.match-team{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px}
+.match-team img{width:42px;height:42px;object-fit:contain}
+.match-team strong{font-size:13px}
+.match-score{color:#e5c66a;font-size:22px;font-weight:bold;white-space:nowrap}
+.match-meta{font-size:12px;color:#bbb;line-height:2;margin-top:12px}
+.match-status{display:inline-block;color:#e5c66a;font-size:12px;margin-top:8px}
+.api-error{background:#422b2b;border-right:4px solid #d66;padding:15px;border-radius:8px;color:#fff;line-height:2}
 @media(max-width:500px){
 .player-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 .player-card img{height:175px}
+.match-team strong{font-size:11px}
 }
 </style>
 </head>
@@ -98,19 +116,16 @@ footer p{color:#aaa;font-size:12px}
 <p>آخرین اخبار باشگاه</p>
 <button class="gold" onclick="showPage('news')">مشاهده</button>
 </div>
-
 <div class="card">
 <h3>مسابقات</h3>
 <p>برنامه مسابقات تیم</p>
 <button class="gold" onclick="showPage('matches')">مشاهده</button>
 </div>
-
 <div class="card">
 <h3>نتایج</h3>
 <p>نتایج بازی‌های گذشته</p>
 <button class="gold" onclick="showPage('results')">مشاهده</button>
 </div>
-
 <div class="card">
 <h3>بازیکنان</h3>
 <p>فهرست بازیکنان و اطلاعات اختصاصی</p>
@@ -128,12 +143,14 @@ footer p{color:#aaa;font-size:12px}
 
 <section id="matches" class="page">
 <h2 class="title">مسابقات پیش رو</h2>
-<div id="matchesContent" class="empty">اطلاعات مسابقات هنوز دریافت نشده است.</div>
+<button class="refresh" onclick="loadMatches()">به‌روزرسانی مسابقات</button>
+<div id="matchesContent" class="empty">در حال دریافت مسابقات...</div>
 </section>
 
 <section id="results" class="page">
 <h2 class="title">آخرین نتایج</h2>
-<div id="resultsContent" class="empty">اطلاعات نتایج هنوز دریافت نشده است.</div>
+<button class="refresh" onclick="loadResults()">به‌روزرسانی نتایج</button>
+<div id="resultsContent" class="empty">در حال دریافت نتایج...</div>
 </section>
 
 <section id="transfers" class="page">
@@ -148,7 +165,8 @@ footer p{color:#aaa;font-size:12px}
 
 <section id="table" class="page">
 <h2 class="title">جدول لالیگا</h2>
-<div id="tableContent" class="empty">جدول لالیگا آماده اتصال به منبع اطلاعاتی است.</div>
+<button class="refresh" onclick="loadTable()">به‌روزرسانی جدول</button>
+<div id="tableContent" class="empty">در حال دریافت جدول لالیگا...</div>
 </section>
 
 <section id="players" class="page">
@@ -171,6 +189,238 @@ footer p{color:#aaa;font-size:12px}
 
 <script>
 
+/* اتصال به سرور اختصاصی Cloudflare */
+const API_URL="https://royal-news-api-2026.hazhiralizadeh3039.workers.dev/";
+const SEASON="2026";
+const REAL_MADRID_ID=86;
+
+async function apiRequest(endpoint){
+
+const url=new URL(API_URL);
+url.searchParams.set("endpoint",endpoint);
+url.searchParams.set("season",SEASON);
+
+const response=await fetch(url.toString());
+const data=await response.json();
+
+if(!response.ok){
+throw new Error(data.message||data.error||"خطا در دریافت اطلاعات");
+}
+
+if(data.error){
+throw new Error(data.message||data.error);
+}
+
+return data;
+}
+
+function formatDate(date){
+if(!date)return "تاریخ نامشخص";
+return new Date(date).toLocaleString("fa-IR",{
+year:"numeric",
+month:"long",
+day:"numeric",
+hour:"2-digit",
+minute:"2-digit"
+});
+}
+
+function showError(element,message){
+element.innerHTML=`
+<div class="api-error">
+خطا در دریافت اطلاعات از سرور.<br>
+${message}<br>
+لطفاً چند لحظه بعد دوباره امتحان کنید.
+</div>`;
+}
+
+/* جدول لالیگا */
+async function loadTable(){
+
+const area=document.getElementById("tableContent");
+area.innerHTML="در حال دریافت جدول لالیگا...";
+
+try{
+
+const data=await apiRequest("standings");
+
+const standings=data.standings||[];
+const total=standings.find(s=>s.type==="TOTAL")||standings[0];
+
+if(!total||!total.table||!total.table.length){
+throw new Error("جدول در پاسخ سرور پیدا نشد.");
+}
+
+let html=`
+<div class="notice">
+لیگ: ${data.competition?.name||"Primera Division"}
+<br>
+فصل: ${data.season?.startDate||"2026"} تا ${data.season?.endDate||"2027"}
+<br>
+هفته: ${data.season?.currentMatchday||"نامشخص"}
+</div>
+<div class="table-wrap">
+<table class="league-table">
+<thead>
+<tr>
+<th>رتبه</th>
+<th>تیم</th>
+<th>بازی</th>
+<th>برد</th>
+<th>مساوی</th>
+<th>باخت</th>
+<th>تفاضل</th>
+<th>امتیاز</th>
+</tr>
+</thead>
+<tbody>
+`;
+
+total.table.forEach(team=>{
+
+const isMadrid=team.team.id===REAL_MADRID_ID;
+
+html+=`
+<tr class="${isMadrid?"real-madrid":""}">
+<td>${team.position}</td>
+<td>
+<div class="team-name">
+<img src="${team.team.crest}" alt="">
+${team.team.shortName||team.team.name}
+</div>
+</td>
+<td>${team.playedGames}</td>
+<td>${team.won}</td>
+<td>${team.draw}</td>
+<td>${team.lost}</td>
+<td>${team.goalDifference}</td>
+<td><strong>${team.points}</strong></td>
+</tr>
+`;
+
+});
+
+html+=`</tbody></table></div>`;
+
+area.innerHTML=html;
+
+}catch(error){
+showError(area,error.message);
+}
+
+}
+
+/* ساخت کارت مسابقه */
+function createMatchCard(match){
+
+const home=match.homeTeam||{};
+const away=match.awayTeam||{};
+const finished=match.status==="FINISHED";
+
+let score="VS";
+
+if(finished){
+const goals=match.score?.fullTime;
+if(goals&&goals.home!==null&&goals.away!==null){
+score=`${goals.home} - ${goals.away}`;
+}
+}
+
+return `
+<div class="match-card">
+<div class="match-teams">
+
+<div class="match-team">
+<img src="${home.crest||""}" alt="">
+<strong>${home.shortName||home.name||"تیم میزبان"}</strong>
+</div>
+
+<div class="match-score">${score}</div>
+
+<div class="match-team">
+<img src="${away.crest||""}" alt="">
+<strong>${away.shortName||away.name||"تیم مهمان"}</strong>
+</div>
+
+</div>
+
+<div class="match-meta">
+${match.competition?.name||"مسابقات فوتبال"}
+<br>
+${formatDate(match.utcDate)}
+</div>
+
+<div class="match-status">
+${finished?"پایان مسابقه":match.status==="IN_PLAY"?"در حال برگزاری":"برنامه‌ریزی شده"}
+</div>
+</div>
+`;
+
+}
+
+/* مسابقات پیش رو */
+async function loadMatches(){
+
+const area=document.getElementById("matchesContent");
+area.innerHTML="در حال دریافت مسابقات...";
+
+try{
+
+const data=await apiRequest("matches");
+
+const matches=(data.matches||[])
+.filter(m=>
+(m.status==="SCHEDULED"||m.status==="TIMED"||m.status==="IN_PLAY")&&
+(m.homeTeam?.id===REAL_MADRID_ID||m.awayTeam?.id===REAL_MADRID_ID)
+)
+.sort((a,b)=>new Date(a.utcDate)-new Date(b.utcDate))
+.slice(0,10);
+
+if(!matches.length){
+area.innerHTML="در حال حاضر مسابقه آینده‌ای در اطلاعات دریافتی پیدا نشد.";
+return;
+}
+
+area.innerHTML=matches.map(createMatchCard).join("");
+
+}catch(error){
+showError(area,error.message);
+}
+
+}
+
+/* آخرین نتایج */
+async function loadResults(){
+
+const area=document.getElementById("resultsContent");
+area.innerHTML="در حال دریافت نتایج...";
+
+try{
+
+const data=await apiRequest("matches");
+
+const matches=(data.matches||[])
+.filter(m=>
+m.status==="FINISHED"&&
+(m.homeTeam?.id===REAL_MADRID_ID||m.awayTeam?.id===REAL_MADRID_ID)
+)
+.sort((a,b)=>new Date(b.utcDate)-new Date(a.utcDate))
+.slice(0,10);
+
+if(!matches.length){
+area.innerHTML="نتیجه نهایی مسابقه‌ای در اطلاعات دریافتی پیدا نشد.";
+return;
+}
+
+area.innerHTML=matches.map(createMatchCard).join("");
+
+}catch(error){
+showError(area,error.message);
+}
+
+}
+
+/* فهرست بازیکنان */
 const players=[
 ["Thibaut Courtois",1,"دروازه‌بان","COURTOIS"],
 ["Andriy Lunin",13,"دروازه‌بان","LUNIN"],
@@ -201,6 +451,7 @@ const players=[
 ];
 
 function showPage(id,btn){
+
 document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
 document.getElementById(id).classList.add("active");
 
@@ -211,9 +462,13 @@ if(btn)btn.classList.add("active");
 window.scrollTo({top:0,behavior:"smooth"});
 
 if(id==="players")renderPlayers();
+if(id==="table")loadTable();
+if(id==="matches")loadMatches();
+if(id==="results")loadResults();
+
 }
 
-/* آدرس تصاویر رسمی بازیکنان */
+/* تصاویر بازیکنان */
 function imageURL(code){
 
 const officialPhotos={
@@ -240,6 +495,7 @@ return officialPhotos[code];
 }
 
 return "https://assets.realmadrid.com/is/image/realmadrid/"+code+"_POSE_1500X2000?$Desktop$=&fit=wrap&wid=600";
+
 }
 
 function renderPlayers(list=players){
