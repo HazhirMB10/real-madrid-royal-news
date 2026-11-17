@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REAL MADRID | ROYAL NEWS</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#071426;color:white;font-family:Tahoma,Arial}
+header{background:#0d2038;text-align:center;padding:24px;border-bottom:2px solid #c9a646}
+.logo{font-size:27px;color:#e5c66a;font-weight:bold}
+.subtitle{font-size:12px;color:#bbb;margin-top:8px}
+nav{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;background:#102642;padding:12px;position:sticky;top:0;z-index:5}
+button{cursor:pointer;font-family:inherit}
+nav button{background:#183451;color:white;border:1px solid #c9a646;padding:10px;border-radius:7px}
+nav button:hover,nav button.active{background:#c9a646;color:#071426}
+.container{max-width:1150px;margin:auto;padding:16px}
+.page{display:none}
+.page.active{display:block}
+.title{text-align:center;color:#e5c66a;margin:25px 0}
+.hero{background:linear-gradient(140deg,#183451,#071426);border:1px solid #c9a646;border-radius:13px;text-align:center;padding:40px 15px}
+.hero h1{color:#e5c66a}
+.hero p{line-height:2;color:#ddd}
+.gold{background:#c9a646;color:#071426;border:0;padding:12px 18px;border-radius:7px;font-weight:bold}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:13px}
+.card{background:#102642;border:1px solid #294765;border-radius:10px;padding:16px}
+.card h3{color:#e5c66a}
+.card p{line-height:1.9;color:#ddd;font-size:13px}
+.notice{background:#102642;border-right:4px solid #c9a646;padding:13px;margin:15px 0;line-height:1.9;color:#ddd}
+.search{width:100%;padding:13px;background:#102642;color:white;border:1px solid #c9a646;border-radius:8px;margin-bottom:16px;font-family:inherit}
+.player-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:13px}
+.player-card{background:#102642;border:1px solid #294765;border-radius:10px;overflow:hidden;text-align:center;cursor:pointer}
+.player-card:hover{border-color:#e5c66a}
+.player-card img{width:100%;height:200px;object-fit:cover;background:#183451}
+.player-card h3{font-size:14px;color:#e5c66a;direction:ltr;padding:0 5px}
+.player-card p{font-size:12px;color:#ddd}
+.number{display:inline-block;background:#c9a646;color:#071426;padding:5px 12px;border-radius:5px;margin:5px;font-weight:bold}
+.profile{background:#102642;border:1px solid #c9a646;border-radius:12px;overflow:hidden}
+.profile-top{text-align:center;padding:22px;background:linear-gradient(140deg,#183451,#071426)}
+.profile-top img{width:175px;height:210px;object-fit:cover;border:2px solid #c9a646;border-radius:10px}
+.profile-top h2{color:#e5c66a;direction:ltr}
+.info-grid,.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;padding:12px}
+.info-box{background:#183451;border-radius:8px;text-align:center;padding:15px}
+.info-box small{display:block;color:#aaa;margin-bottom:8px}
+.info-box strong{color:#e5c66a;font-size:13px}
+.stats-title{text-align:center;color:#e5c66a;margin:25px 0 10px}
+.stat-card{background:linear-gradient(145deg,#183451,#0d2038);border:1px solid #b99a43;border-radius:10px;text-align:center;padding:17px 7px}
+.stat-icon{font-size:24px}
+.stat-value{font-size:25px;color:#e5c66a;font-weight:bold;margin:10px}
+.stat-label{font-size:13px}
+.stat-status{font-size:10px;color:#aaa;margin-top:9px}
+.back{margin:15px;background:#c9a646;color:#071426;border:0;padding:12px 20px;border-radius:7px}
+.empty{text-align:center;background:#102642;padding:25px;border-radius:9px;color:#bbb;line-height:2}
+footer{text-align:center;background:#0d2038;border-top:2px solid #c9a646;padding:25px;color:#e5c66a;margin-top:35px}
+footer p{color:#aaa;font-size:12px}
+@media(max-width:500px){.player-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.player-card img{height:175px}}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">REAL MADRID</div>
+<div class="subtitle">ROYAL NEWS | THE HOME OF MADRIDISMO</div>
+</header>
+
+<nav>
+<button class="active" onclick="showPage('home',this)">خانه</button>
+<button onclick="showPage('news',this)">اخبار</button>
+<button onclick="showPage('matches',this)">مسابقات</button>
+<button onclick="showPage('results',this)">نتایج</button>
+<button onclick="showPage('transfers',this)">نقل‌وانتقالات</button>
+<button onclick="showPage('rumors',this)">شایعات</button>
+<button onclick="showPage('table',this)">جدول لالیگا</button>
+<button onclick="showPage('players',this)">بازیکنان</button>
+</nav>
+
+<main class="container">
+
+<section id="home" class="page active">
+<div class="hero">
+<h1>HALA MADRID!</h1>
+<p>به وب‌سایت اختصاصی اخبار و اطلاعات رئال مادرید خوش آمدید.</p>
+<p>اخبار، مسابقات، نتایج، نقل‌وانتقالات و اطلاعات بازیکنان باشگاه.</p>
+<button class="gold" onclick="showPage('players')">مشاهده بازیکنان</button>
+</div>
+<h2 class="title">بخش‌های اصلی</h2>
+<div class="cards">
+<div class="card"><h3>اخبار</h3><p>آخرین اخبار باشگاه</p><button class="gold" onclick="showPage('news')">مشاهده</button></div>
+<div class="card"><h3>مسابقات</h3><p>برنامه مسابقات تیم</p><button class="gold" onclick="showPage('matches')">مشاهده</button></div>
+<div class="card"><h3>نتایج</h3><p>نتایج بازی‌های گذشته</p><button class="gold" onclick="showPage('results')">مشاهده</button></div>
+<div class="card"><h3>بازیکنان</h3><p>فهرست بازیکنان و اطلاعات اختصاصی</p><button class="gold" onclick="showPage('players')">مشاهده</button></div>
+</div>
+<div class="notice">وب‌سایت هواداری مستقل رئال مادرید</div>
+</section>
+
+<section id="news" class="page">
+<h2 class="title">اخبار رئال مادرید</h2>
+<div class="empty">بخش اخبار آماده اتصال به منبع خبری است.</div>
+</section>
+
+<section id="matches" class="page">
+<h2 class="title">مسابقات پیش رو</h2>
+<div id="matchesContent" class="empty">اطلاعات مسابقات هنوز دریافت نشده است.</div>
+</section>
+
+<section id="results" class="page">
+<h2 class="title">آخرین نتایج</h2>
+<div id="resultsContent" class="empty">اطلاعات نتایج هنوز دریافت نشده است.</div>
+</section>
+
+<section id="transfers" class="page">
+<h2 class="title">نقل‌وانتقالات</h2>
+<div class="empty">اخبار رسمی نقل‌وانتقالات در این قسمت نمایش داده می‌شود.</div>
+</section>
+
+<section id="rumors" class="page">
+<h2 class="title">شایعات</h2>
+<div class="empty">شایعات نقل‌وانتقالات با مشخص‌کردن غیررسمی بودن منتشر می‌شوند.</div>
+</section>
+
+<section id="table" class="page">
+<h2 class="title">جدول لالیگا</h2>
+<div id="tableContent" class="empty">جدول لالیگا آماده اتصال به منبع اطلاعاتی است.</div>
+</section>
+
+<section id="players" class="page">
+<h2 class="title">بازیکنان رئال مادرید</h2>
+<input id="playerSearch" class="search" placeholder="جست‌وجوی بازیکن..." oninput="searchPlayers()">
+<div id="playersList" class="player-grid"></div>
+</section>
+
+<section id="playerDetail" class="page">
+<div id="playerProfile"></div>
+</section>
+
+</main>
+
+<footer>
+<strong>REAL MADRID | ROYAL NEWS</strong>
+<p>HALA MADRID Y NADA MÁS</p>
+<p>Independent fan website</p>
+</footer>
+
+<script>
+const players=[
+["Thibaut Courtois",1,"دروازه‌بان","COURTOIS"],
+["Andriy Lunin",13,"دروازه‌بان","LUNIN"],
+["Raúl Asencio",2,"مدافع","ASENCIO"],
+["Éder Militão",3,"مدافع","MILITAO"],
+["Dean Huijsen",4,"مدافع","HUIJSEN"],
+["Trent Alexander-Arnold",12,"مدافع","TRENT"],
+["Ibrahima Konaté",16,"مدافع","KONATE"],
+["Marc Cucurella",17,"مدافع","CUCURELLA"],
+["Álvaro Carreras",18,"مدافع","CARRERAS"],
+["Antonio Rüdiger",22,"مدافع","RUDIGER"],
+["Ferland Mendy",23,"مدافع","MENDY"],
+["Denzel Dumfries",24,"مدافع","DUMFRIES"],
+["Jude Bellingham",5,"هافبک","BELLINGHAM"],
+["Eduardo Camavinga",6,"هافبک","CAMAVINGA"],
+["Federico Valverde",8,"هافبک","VALVERDE"],
+["Aurélien Tchouaméni",14,"هافبک","TCHOUAMENI"],
+["Arda Güler",15,"هافبک","ARDA_GULER"],
+["Bernardo Silva",20,"هافبک","BERNARDO"],
+["Thiago Pitarch",27,"هافبک","THIAGO"],
+["Vinícius Júnior",7,"مهاجم","VINI_JR"],
+["Endrick",9,"مهاجم","ENDRICK"],
+["Kylian Mbappé",10,"مهاجم","MBAPPE"],
+["Rodrygo Goes",11,"مهاجم","RODRYGO"],
+["Carlos Espí",19,"مهاجم","CARLOS_ESPI"],
+["Brahim Díaz",21,"مهاجم","BRAHIM"],
+["Yan Diomande",25,"مهاجم","DIOMANDE"]
+];
+
+function showPage(id,btn){
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+if(btn)btn.classList.add("active");
+window.scrollTo({top:0,behavior:"smooth"});
+if(id==="players")renderPlayers();
+}
+
+function imageURL(code){
+return "https://assets.realmadrid.com/is/image/realmadrid/"+code+"_POSE_1500X2000?$Desktop$=&fit=wrap&wid=600";
+}
+
+function renderPlayers(list=players){
+const area=document.getElementById("playersList");
+area.innerHTML="";
+list.forEach(p=>{
+const card=document.createElement("div");
+card.className="player-card";
+card.innerHTML=`
+<img src="${imageURL(p[3])}" alt="${p[0]}" onerror="this.style.display='none'">
+<h3>${p[0]}</h3>
+<div class="number">${p[1]}</div>
+<p>${p[2]}</p>`;
+card.onclick=()=>openPlayer(p);
+area.appendChild(card);
+});
+}
+
+function searchPlayers(){
+const q=document.getElementById("playerSearch").value.toLowerCase().trim();
+renderPlayers(players.filter(p=>p[0].toLowerCase().includes(q)||p[2].includes(q)||String(p[1]).includes(q)));
+}
+
+function statCard(icon,label){
+return `<div class="stat-card">
+<div class="stat-icon">${icon}</div>
+<div class="stat-value">—</div>
+<div class="stat-label">${label}</div>
+<div class="stat-status">در انتظار اطلاعات معتبر</div>
+</div>`;
+}
+
+function openPlayer(p){
+document.getElementById("playerProfile").innerHTML=`
+<div class="profile">
+<div class="profile-top">
+<img src="${imageURL(p[3])}" alt="${p[0]}" onerror="this.style.display='none'">
+<h2>${p[0]}</h2>
+<div class="number">${p[1]}</div>
+<p>${p[2]} | REAL MADRID</p>
+</div>
+
+<h3 class="title">اطلاعات بازیکن</h3>
+<div class="info-grid">
+<div class="info-box"><small>نام</small><strong>${p[0]}</strong></div>
+<div class="info-box"><small>شماره پیراهن</small><strong>${p[1]}</strong></div>
+<div class="info-box"><small>پست</small><strong>${p[2]}</strong></div>
+<div class="info-box"><small>باشگاه</small><strong>Real Madrid</strong></div>
+</div>
+
+<h3 class="stats-title">آمار فصل جاری</h3>
+<div class="stats-grid">
+${statCard("⚽","بازی‌ها")}
+${statCard("🥅","گل‌ها")}
+${statCard("🎯","پاس گل")}
+${statCard("⏱️","دقایق بازی")}
+${statCard("🟨","کارت زرد")}
+${statCard("🟥","کارت قرمز")}
+</div>
+
+<h3 class="stats-title">آمار دوران حرفه‌ای</h3>
+<div class="stats-grid">
+${statCard("⚽","مجموع بازی‌ها")}
+${statCard("🥅","مجموع گل‌ها")}
+${statCard("🎯","مجموع پاس گل")}
+${statCard("⏱️","مجموع دقایق")}
+${statCard("🟨","مجموع کارت زرد")}
+${statCard("🟥","مجموع کارت قرمز")}
+</div>
+
+<h3 class="title">اطلاعات تکمیلی</h3>
+<div class="info-grid">
+<div class="info-box"><small>افتخارات فردی</small><strong>در انتظار اطلاعات</strong></div>
+<div class="info-box"><small>افتخارات تیمی</small><strong>در انتظار اطلاعات</strong></div>
+<div class="info-box"><small>باشگاه‌های قبلی</small><strong>در انتظار اطلاعات</strong></div>
+<div class="info-box"><small>اطلاعات فیزیکی</small><strong>در انتظار اطلاعات</strong></div>
+</div>
+
+<div class="notice">آمار واقعی پس از اتصال منبع معتبر نمایش داده می‌شود.</div>
+<button class="back" onclick="backToPlayers()">بازگشت به بازیکنان</button>
+</div>`;
+showPage("playerDetail");
+}
+
+function backToPlayers(){showPage("players");}
+
+renderPlayers();
+</script>
+</body>
+</html>
