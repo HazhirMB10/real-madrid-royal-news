@@ -4,508 +4,253 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#071426">
-<title>FOOTBALL 360 | The World of Football</title>
-
+<meta name="theme-color" content="#ffffff">
+<title>FOOTBALL 360 | World Football</title>
 <style>
 :root{
-  --bg:#071426;
-  --panel:#10243d;
-  --panel2:#142c49;
-  --gold:#e4bd59;
-  --text:#f5f7fb;
-  --muted:#9eacc0;
-  --line:#263b55;
-  --green:#36d399;
+--bg:#f4f5f7;--white:#fff;--black:#111;
+--dark:#202124;--muted:#737780;--line:#e4e5e8;
+--soft:#eeeeef;--green:#16875b;
 }
 *{box-sizing:border-box}
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:Tahoma,Arial,sans-serif;
-}
+body{margin:0;background:var(--bg);color:var(--black);font-family:Tahoma,Arial,sans-serif}
 button,input{font:inherit}
 button{cursor:pointer}
-header{
-  background:linear-gradient(120deg,#102746,#071426);
-  border-bottom:1px solid var(--line);
-  padding:18px 5%;
-}
-.top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-  flex-wrap:wrap;
-}
-.brand{
-  font-size:27px;
-  font-weight:900;
-  letter-spacing:1px;
-}
-.brand span{color:var(--gold)}
-.tagline{
-  color:var(--muted);
-  font-size:11px;
-  margin-top:5px;
-  letter-spacing:2px;
-}
-.search{
-  background:#071426;
-  border:1px solid var(--line);
-  border-radius:25px;
-  padding:11px 16px;
-  color:white;
-  width:min(300px,100%);
-  outline:none;
-}
-nav{
-  display:flex;
-  gap:8px;
-  overflow-x:auto;
-  padding:13px 5%;
-  background:#0b1b30;
-  border-bottom:1px solid var(--line);
-  position:sticky;
-  top:0;
-  z-index:10;
-}
-nav button{
-  white-space:nowrap;
-  border:0;
-  background:transparent;
-  color:#c3cede;
-  padding:10px 15px;
-  border-radius:8px;
-}
-nav button.active,nav button:hover{
-  color:#111;
-  background:var(--gold);
-}
-main{max-width:1250px;margin:auto;padding:25px 16px}
-.hero{
-  background:linear-gradient(110deg,#173657,#0c1b30 70%);
-  border:1px solid #304766;
-  border-radius:18px;
-  padding:30px;
-  margin-bottom:24px;
-  position:relative;
-  overflow:hidden;
-}
-.hero h1{font-size:clamp(25px,5vw,42px);margin:0 0 12px}
-.hero h1 span{color:var(--gold)}
-.hero p{color:#bdc9d9;line-height:2;max-width:650px}
-.hero-label{
-  display:inline-block;
-  background:#263d54;
-  color:var(--gold);
-  padding:7px 12px;
-  border-radius:20px;
-  font-size:12px;
-}
+header{background:#fff;border-bottom:1px solid var(--line);padding:18px 5%}
+.top{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.brand{font-size:28px;font-weight:900;letter-spacing:1px}
+.brand span{color:#777}
+.tagline{font-size:11px;color:var(--muted);margin-top:5px;letter-spacing:2px}
+.search{background:#f5f5f5;border:1px solid var(--line);border-radius:25px;padding:12px 16px;width:min(320px,100%);outline:none}
+nav{display:flex;gap:7px;overflow-x:auto;padding:12px 5%;background:#111;position:sticky;top:0;z-index:10}
+nav button{border:0;background:transparent;color:#ddd;padding:11px 15px;border-radius:7px;white-space:nowrap;font-size:13px}
+nav button.active,nav button:hover{background:#fff;color:#111}
+main{max-width:1250px;margin:auto;padding:24px 16px}
+.hero{background:#111;color:white;border-radius:17px;padding:30px;margin-bottom:25px}
+.hero h1{font-size:clamp(26px,5vw,43px);margin:15px 0}
+.hero h1 span{color:#bbb}
+.hero p{color:#ddd;line-height:2;max-width:700px}
+.hero-label{font-size:11px;letter-spacing:2px;color:#bbb}
 .section{margin:28px 0}
-.section-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  margin-bottom:15px;
-}
+.section-title{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:15px}
 .section-title h2{font-size:19px;margin:0}
-.section-title span{color:var(--gold);font-size:12px}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
-  gap:12px;
-}
-.card{
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:13px;
-  padding:17px;
-  transition:.2s;
-}
-.card:hover{border-color:var(--gold);transform:translateY(-2px)}
-.league-card{text-align:center;min-height:115px}
+.section-title span{font-size:11px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:13px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:17px;transition:.2s}
+.card:hover{border-color:#777;transform:translateY(-2px)}
+.league-card{text-align:center;min-height:120px}
 .league-icon{font-size:29px;margin-bottom:10px}
 .league-card h3{font-size:14px;margin:0}
-.league-card p{font-size:11px;color:var(--muted);margin:7px 0 0}
-.match-list{display:grid;gap:10px}
-.match{
-  display:grid;
-  grid-template-columns:1fr auto 1fr;
-  align-items:center;
-  gap:10px;
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:12px;
-  padding:15px;
-}
-.team{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  font-weight:bold;
-  font-size:13px;
-}
-.team:last-child{justify-content:flex-end}
-.crest{
-  width:34px;height:34px;
-  border-radius:50%;
-  display:grid;place-items:center;
-  background:#203c5c;
-  color:var(--gold);
-  font-size:11px;
-  flex-shrink:0;
-}
-.score{text-align:center;min-width:75px}
-.score strong{font-size:20px}
-.score small{display:block;color:var(--muted);font-size:10px;margin-top:5px}
-.status{
-  color:var(--green);
-  font-size:10px;
-  display:block;
-  margin-bottom:4px;
-}
-.pills{display:flex;gap:8px;flex-wrap:wrap}
-.pill{
-  border:1px solid var(--line);
-  background:var(--panel);
-  color:#dce4ef;
-  padding:9px 14px;
-  border-radius:20px;
-  font-size:12px;
-}
-.pill.active{background:var(--gold);color:#111;border-color:var(--gold)}
-.feature{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:13px;
-}
-.feature .card h3{color:var(--gold);margin:0 0 10px;font-size:15px}
-.feature .card p{color:var(--muted);font-size:12px;line-height:2;margin:0}
-.video-placeholder{
-  min-height:155px;
-  border-radius:12px;
-  background:linear-gradient(135deg,#1a3858,#09182a);
-  display:grid;
-  place-items:center;
-  text-align:center;
-  color:var(--muted);
-  border:1px dashed #49617d;
-  padding:15px;
-}
-.play{
-  font-size:35px;
-  color:var(--gold);
-  margin-bottom:8px;
-}
-.notice{
-  color:var(--muted);
-  font-size:12px;
-  line-height:2;
-  padding:13px;
-  border-right:3px solid var(--gold);
-  background:#10243d;
-  border-radius:8px;
-}
+.league-card p{font-size:11px;color:var(--muted)}
 .page{display:none}
 .page.active{display:block}
-.empty{
-  padding:25px;
-  text-align:center;
-  color:var(--muted);
-  background:var(--panel);
-  border-radius:12px;
-}
-footer{
-  border-top:1px solid var(--line);
-  padding:28px 15px;
-  text-align:center;
-  color:var(--muted);
-  font-size:12px;
-  line-height:2;
-}
-footer strong{color:var(--gold)}
+.feature{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:13px}
+.feature .card h3{font-size:15px;margin:0 0 10px}
+.feature .card p{font-size:12px;color:var(--muted);line-height:2}
+.match{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px;margin-bottom:10px}
+.team{font-weight:bold;font-size:13px}
+.team:last-child{text-align:left}
+.score{text-align:center;min-width:75px;font-weight:bold;font-size:19px}
+.score small{display:block;font-size:10px;color:var(--muted);margin-top:5px;font-weight:normal}
+.pills{display:flex;gap:8px;flex-wrap:wrap}
+.pill{border:1px solid var(--line);background:#fff;padding:9px 14px;border-radius:20px;font-size:12px}
+.pill.active{background:#111;color:white}
+.video{background:#181818;color:white;border-radius:12px;min-height:155px;display:grid;place-items:center;text-align:center;padding:15px}
+.play{font-size:35px;color:white;margin-bottom:8px}
+.notice{background:#fff;border:1px solid var(--line);border-right:3px solid #111;padding:14px;border-radius:8px;color:#555;font-size:12px;line-height:2}
+.empty{background:#fff;border:1px solid var(--line);padding:25px;text-align:center;border-radius:12px;color:var(--muted);line-height:2}
+.page-heading{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:15px}
+footer{background:#111;color:#ddd;text-align:center;padding:30px 15px;font-size:12px;line-height:2;margin-top:35px}
+footer strong{color:#fff;font-size:18px}
 @media(max-width:550px){
-  .brand{font-size:22px}
-  .hero{padding:22px}
-  .match{padding:10px 7px;gap:4px}
-  .team{font-size:11px;gap:5px}
-  .crest{width:28px;height:28px}
-  .score strong{font-size:17px}
+.brand{font-size:23px}.hero{padding:23px}
+.match{padding:12px 7px;gap:5px}
+.team{font-size:11px}.score{font-size:17px}
 }
 </style>
 </head>
-
 <body>
 
 <header>
-  <div class="top">
-    <div>
-      <div class="brand">FOOTBALL <span>360</span></div>
-      <div class="tagline">THE WORLD OF FOOTBALL</div>
-    </div>
-    <input class="search" id="searchInput"
-      placeholder="جست‌وجوی تیم، بازیکن یا لیگ..."
-      oninput="searchSite()">
-  </div>
+<div class="top">
+<div>
+<div class="brand">FOOTBALL <span>360</span></div>
+<div class="tagline">THE WORLD OF FOOTBALL</div>
+</div>
+<input class="search" id="searchInput" placeholder="جست‌وجوی لیگ، تیم یا بازیکن..." oninput="searchSite()">
+</div>
 </header>
 
-<nav>
-  <button class="active" onclick="showPage('home',this)">خانه</button>
-  <button onclick="showPage('matches',this)">مسابقات</button>
-  <button onclick="showPage('leagues',this)">لیگ‌ها</button>
-  <button onclick="showPage('teams',this)">تیم‌ها</button>
-  <button onclick="showPage('players',this)">بازیکنان</button>
-  <button onclick="showPage('stats',this)">آمار و برترین‌ها</button>
-  <button onclick="showPage('videos',this)">ویدئوها</button>
-  <button onclick="showPage('news',this)">اخبار</button>
+<nav id="navigation">
+<button class="active" onclick="showPage('home',this)">خانه</button>
+<button onclick="showPage('matches',this)">مسابقات</button>
+<button onclick="showPage('leagues',this)">لیگ‌ها</button>
+<button onclick="showPage('teams',this)">تیم‌ها</button>
+<button onclick="showPage('fifa',this)">FIFA DAYS</button>
+<button onclick="showPage('players',this)">بازیکنان</button>
+<button onclick="showPage('stats',this)">آمار</button>
+<button onclick="showPage('videos',this)">ویدئوها</button>
+<button onclick="showPage('news',this)">اخبار</button>
 </nav>
 
 <main>
 
-<!-- HOME -->
 <div class="page active" id="home">
-  <section class="hero">
-    <span class="hero-label">WELCOME TO FOOTBALL 360</span>
-    <h1>دنیای فوتبال در <span>یک جا</span></h1>
-    <p>
-      مسابقات، نتایج، لیگ‌ها، تیم‌ها، بازیکنان، آمار،
-      اخبار و ویدئوهای فوتبال جهان؛ همه در یک وب‌سایت.
-    </p>
-  </section>
+<section class="hero">
+<div class="hero-label">WELCOME TO FOOTBALL 360</div>
+<h1>دنیای فوتبال در <span>یک جا</span></h1>
+<p>تمام لیگ‌ها، تیم‌ها، بازیکنان، نتایج، آمار، اخبار و ویدئوهای فوتبال جهان.</p>
+</section>
 
-  <section class="section">
-    <div class="section-title">
-      <h2>🏆 لیگ‌های محبوب</h2>
-      <span>POPULAR LEAGUES</span>
-    </div>
-    <div class="grid" id="homeLeagues"></div>
-  </section>
+<section class="section">
+<div class="section-title"><h2>🏆 لیگ‌های محبوب</h2><span>POPULAR LEAGUES</span></div>
+<div class="grid" id="homeLeagues"></div>
+</section>
 
-  <section class="section">
-    <div class="section-title">
-      <h2>⚽ مسابقات</h2>
-      <span>FIXTURES & RESULTS</span>
-    </div>
-    <div class="notice">
-      اطلاعات واقعی مسابقات در مرحله اتصال سرویس آماری نمایش داده خواهد شد.
-    </div>
-  </section>
+<section class="section">
+<div class="section-title"><h2>⚽ مسابقات فوتبال</h2><span>MATCH CENTER</span></div>
+<div class="notice">مسابقات و نتایج واقعی پس از اتصال سرویس آماری نمایش داده خواهند شد.</div>
+</section>
 
-  <section class="section">
-    <div class="section-title">
-      <h2>🎬 دنیای ویدئو</h2>
-      <span>FOOTBALL VIDEOS</span>
-    </div>
-    <div class="feature">
-      <div class="video-placeholder">
-        <div><div class="play">▶</div>پخش زنده رسمی مسابقات</div>
-      </div>
-      <div class="video-placeholder">
-        <div><div class="play">▶</div>گل‌ها و خلاصه بازی‌ها</div>
-      </div>
-      <div class="video-placeholder">
-        <div><div class="play">▶</div>بهترین لحظات فوتبال</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="section-title">
-      <h2>🌍 امکانات سایت</h2>
-      <span>EXPLORE FOOTBALL</span>
-    </div>
-    <div class="feature">
-      <div class="card"><h3>لیگ‌ها</h3><p>جدول، مسابقات و آمار رقابت‌های مختلف.</p></div>
-      <div class="card"><h3>تیم‌ها</h3><p>اطلاعات باشگاه‌ها، ترکیب و افتخارات.</p></div>
-      <div class="card"><h3>بازیکنان</h3><p>زندگی‌نامه، آمار فصل و افتخارات فردی.</p></div>
-      <div class="card"><h3>اخبار</h3><p>اخبار و نقل‌وانتقالات فوتبال جهان.</p></div>
-    </div>
-  </section>
+<section class="section">
+<div class="section-title"><h2>🎬 فوتبال و ویدئو</h2><span>FOOTBALL TV</span></div>
+<div class="feature">
+<div class="video"><div><div class="play">▶</div>LIVE MATCH</div></div>
+<div class="video"><div><div class="play">▶</div>GOAL REPLAYS</div></div>
+<div class="video"><div><div class="play">▶</div>HIGHLIGHTS</div></div>
+</div>
+</section>
 </div>
 
-<!-- MATCHES -->
 <div class="page" id="matches">
-  <section class="section">
-    <div class="section-title">
-      <h2>⚽ مسابقات فوتبال</h2>
-      <span>MATCH CENTER</span>
-    </div>
-    <div class="pills">
-      <button class="pill active">همه مسابقات</button>
-      <button class="pill">زنده</button>
-      <button class="pill">امروز</button>
-      <button class="pill">آینده</button>
-      <button class="pill">نتایج</button>
-    </div>
-    <div class="empty" style="margin-top:15px">
-      مسابقات و نتایج پس از اتصال API در این قسمت نمایش داده می‌شوند.
-    </div>
-  </section>
+<div class="page-heading"><h2>⚽ مسابقات و نتایج</h2>LIVE SCORES & FIXTURES</div>
+<div class="pills">
+<button class="pill active">همه</button><button class="pill">زنده</button>
+<button class="pill">امروز</button><button class="pill">آینده</button>
+<button class="pill">نتایج</button>
+</div>
+<div class="empty" style="margin-top:15px">اطلاعات واقعی بازی‌ها در مرحله اتصال API اضافه می‌شود.</div>
 </div>
 
-<!-- LEAGUES -->
 <div class="page" id="leagues">
-  <section class="section">
-    <div class="section-title">
-      <h2>🏆 تمام لیگ‌ها و رقابت‌ها</h2>
-      <span>LEAGUES</span>
-    </div>
-    <div class="grid" id="allLeagues"></div>
-  </section>
+<div class="section-title"><h2>🏆 لیگ‌های جهان</h2><span>ALL COMPETITIONS</span></div>
+<div class="grid" id="allLeagues"></div>
 </div>
 
-<!-- TEAMS -->
 <div class="page" id="teams">
-  <section class="section">
-    <div class="section-title">
-      <h2>🛡️ تیم‌های فوتبال</h2>
-      <span>CLUBS & NATIONAL TEAMS</span>
-    </div>
-    <div class="empty">
-      فهرست تیم‌ها، نشان باشگاه، مربی، ورزشگاه، ترکیب و افتخارات
-      در مرحله بعد به اطلاعات واقعی متصل می‌شود.
-    </div>
-  </section>
+<div class="page-heading"><h2>🛡️ TEAMS | تیم‌های جهان</h2></div>
+<div class="feature">
+<div class="card"><h3>باشگاه‌ها</h3><p>تمام باشگاه‌های لیگ‌ها، نشان، مربی، ورزشگاه و افتخارات.</p></div>
+<div class="card"><h3>تیم‌های ملی</h3><p>تیم‌های ملی کشورها، مربیان، ترکیب و تاریخچه.</p></div>
+<div class="card"><h3>ترکیب تیم‌ها</h3><p>بازیکنان اصلی، ذخیره‌ها، شماره پیراهن و پست.</p></div>
+</div>
+<div class="empty" style="margin-top:15px">اطلاعات کامل تیم‌ها در مرحله بعد متصل خواهد شد.</div>
 </div>
 
-<!-- PLAYERS -->
+<div class="page" id="fifa">
+<div class="page-heading"><h2>🌍 FIFA DAYS | فوتبال ملی</h2></div>
+<div class="feature">
+<div class="card"><h3>مسابقات ملی</h3><p>برنامه بازی‌های ملی و نتایج کشورها.</p></div>
+<div class="card"><h3>فهرست دعوت‌شدگان</h3><p>بازیکنان دعوت‌شده هر کشور و باشگاه فعلی آن‌ها.</p></div>
+<div class="card"><h3>مقدماتی جام جهانی</h3><p>جدول گروه‌ها و نتایج مسابقات مقدماتی.</p></div>
+<div class="card"><h3>بازی‌های دوستانه</h3><p>مسابقات دوستانه ملی و برنامه آینده.</p></div>
+</div>
+<div class="empty" style="margin-top:15px">تقویم و اطلاعات واقعی بازی‌های ملی در مرحله اتصال داده‌ها اضافه می‌شود.</div>
+</div>
+
 <div class="page" id="players">
-  <section class="section">
-    <div class="section-title">
-      <h2>👤 بازیکنان فوتبال</h2>
-      <span>PLAYER DATABASE</span>
-    </div>
-    <div class="empty">
-      پروفایل بازیکنان شامل عکس، سن، ملیت، قد، پست،
-      شماره پیراهن، آمار و افتخارات خواهد بود.
-    </div>
-  </section>
+<div class="page-heading"><h2>👤 PLAYERS | بازیکنان جهان</h2></div>
+<div class="feature">
+<div class="card"><h3>اطلاعات فردی</h3><p>نام کامل، سن، تاریخ تولد، ملیت، قد، پست و پای تخصصی.</p></div>
+<div class="card"><h3>آمار بازیکنان</h3><p>بازی، گل، پاس گل، کارت‌ها و دقایق بازی.</p></div>
+<div class="card"><h3>افتخارات</h3><p>افتخارات باشگاهی، ملی و جوایز فردی.</p></div>
+<div class="card"><h3>سوابق باشگاهی</h3><p>باشگاه فعلی و تیم‌های قبلی بازیکن.</p></div>
+</div>
+<div class="empty" style="margin-top:15px">پروفایل واقعی بازیکنان در مرحله بعد ساخته می‌شود.</div>
 </div>
 
-<!-- STATS -->
 <div class="page" id="stats">
-  <section class="section">
-    <div class="section-title">
-      <h2>📊 آمار و برترین‌های لیگ‌ها</h2>
-      <span>STATISTICS</span>
-    </div>
-    <div class="feature">
-      <div class="card"><h3>⚽ ۱۰ گل‌زن برتر</h3><p>رتبه‌بندی گل‌زنان هر لیگ.</p></div>
-      <div class="card"><h3>🎯 ۱۰ پاسور برتر</h3><p>بیشترین پاس گل در هر رقابت.</p></div>
-      <div class="card"><h3>🧤 بهترین دروازه‌بان‌ها</h3><p>آمار کلین‌شیت و عملکرد دروازه‌بان‌ها.</p></div>
-      <div class="card"><h3>🟨 آمار انضباطی</h3><p>کارت‌های زرد و قرمز بازیکنان.</p></div>
-    </div>
-  </section>
+<div class="page-heading"><h2>📊 STATS | آمار فوتبال</h2></div>
+<div class="feature">
+<div class="card"><h3>⚽ گل‌زنان برتر</h3><p>۱۰ گل‌زن برتر هر لیگ.</p></div>
+<div class="card"><h3>🎯 پاسورهای برتر</h3><p>۱۰ بازیکن برتر از نظر پاس گل.</p></div>
+<div class="card"><h3>🧤 دروازه‌بان‌ها</h3><p>کلین‌شیت و آمار عملکرد.</p></div>
+<div class="card"><h3>🟨 آمار کارت‌ها</h3><p>کارت زرد و قرمز بازیکنان.</p></div>
+</div>
 </div>
 
-<!-- VIDEOS -->
 <div class="page" id="videos">
-  <section class="section">
-    <div class="section-title">
-      <h2>🎬 ویدئوهای فوتبال</h2>
-      <span>FOOTBALL TV</span>
-    </div>
-    <div class="feature">
-      <div class="card">
-        <div class="video-placeholder"><div><div class="play">▶</div>LIVE MATCH</div></div>
-        <h3>پخش زنده مسابقات</h3>
-        <p>لینک پخش رسمی مسابقات دارای مجوز.</p>
-      </div>
-      <div class="card">
-        <div class="video-placeholder"><div><div class="play">▶</div>GOAL REPLAYS</div></div>
-        <h3>بازپخش گل‌ها</h3>
-        <p>ویدئوهای رسمی گل‌ها برای تماشای دوباره.</p>
-      </div>
-      <div class="card">
-        <div class="video-placeholder"><div><div class="play">▶</div>HIGHLIGHTS</div></div>
-        <h3>خلاصه مسابقات</h3>
-        <p>لحظات مهم و صحنه‌های منتخب بازی‌ها.</p>
-      </div>
-    </div>
-    <p class="notice" style="margin-top:15px">
-      ویدئوها در مراحل بعد از منابع رسمی و دارای مجوز نمایش داده خواهند شد.
-    </p>
-  </section>
+<div class="page-heading"><h2>🎬 FOOTBALL VIDEOS</h2></div>
+<div class="feature">
+<div class="card"><div class="video"><div><div class="play">▶</div>LIVE MATCH</div></div><h3>پخش زنده</h3><p>پخش‌کنندگان رسمی مسابقات.</p></div>
+<div class="card"><div class="video"><div><div class="play">▶</div>GOALS</div></div><h3>بازپخش گل‌ها</h3><p>تماشای دوباره گل‌های مسابقات.</p></div>
+<div class="card"><div class="video"><div><div class="play">▶</div>HIGHLIGHTS</div></div><h3>خلاصه بازی</h3><p>صحنه‌های مهم مسابقات.</p></div>
+<div class="card"><div class="video"><div><div class="play">▶</div>FULL MATCH</div></div><h3>بازپخش کامل</h3><p>مسابقات کامل در منابع دارای مجوز.</p></div>
+</div>
 </div>
 
-<!-- NEWS -->
 <div class="page" id="news">
-  <section class="section">
-    <div class="section-title">
-      <h2>📰 اخبار فوتبال جهان</h2>
-      <span>WORLD FOOTBALL NEWS</span>
-    </div>
-    <div class="empty">
-      اخبار لیگ‌ها، باشگاه‌ها، نقل‌وانتقالات و مصاحبه‌ها
-      پس از اتصال منبع خبری معتبر نمایش داده خواهند شد.
-    </div>
-  </section>
+<div class="page-heading"><h2>📰 WORLD FOOTBALL NEWS</h2></div>
+<div class="feature">
+<div class="card"><h3>اخبار لیگ‌ها</h3><p>آخرین اخبار رقابت‌های فوتبال.</p></div>
+<div class="card"><h3>نقل‌وانتقالات</h3><p>انتقالات رسمی و اخبار موثق.</p></div>
+<div class="card"><h3>اخبار تیم‌ها</h3><p>اخبار باشگاه‌ها و تیم‌های ملی.</p></div>
+</div>
 </div>
 
 </main>
 
 <footer>
-  <strong>FOOTBALL 360</strong><br>
-  THE WORLD OF FOOTBALL<br>
-  یک وب‌سایت مستقل فوتبال
+<strong>FOOTBALL 360</strong><br>
+THE WORLD OF FOOTBALL<br>
+Independent Football Platform
 </footer>
 
 <script>
 const leagues=[
- {name:"لیگ قهرمانان اروپا",en:"UEFA Champions League",icon:"🏆"},
- {name:"لیگ برتر انگلیس",en:"Premier League",icon:"🏴"},
- {name:"لالیگا اسپانیا",en:"La Liga",icon:"🇪🇸"},
- {name:"بوندس‌لیگا آلمان",en:"Bundesliga",icon:"🇩🇪"},
- {name:"سری آ ایتالیا",en:"Serie A",icon:"🇮🇹"},
- {name:"لیگ یک فرانسه",en:"Ligue 1",icon:"🇫🇷"},
- {name:"اردیویسه هلند",en:"Eredivisie",icon:"🇳🇱"},
- {name:"لیگ پرتغال",en:"Primeira Liga",icon:"🇵🇹"},
- {name:"لیگ اروپا",en:"Europa League",icon:"🌍"},
- {name:"لیگ کنفرانس اروپا",en:"Conference League",icon:"🌍"},
- {name:"جام جهانی",en:"World Cup",icon:"🌎"},
- {name:"کوپا آمریکا",en:"Copa America",icon:"🏆"}
+["لیگ قهرمانان اروپا","UEFA Champions League","🏆"],
+["لیگ برتر انگلیس","Premier League","🏴"],
+["لالیگا اسپانیا","La Liga","🇪🇸"],
+["بوندس‌لیگا آلمان","Bundesliga","🇩🇪"],
+["سری آ ایتالیا","Serie A","🇮🇹"],
+["لیگ یک فرانسه","Ligue 1","🇫🇷"],
+["اردیویسه هلند","Eredivisie","🇳🇱"],
+["لیگ پرتغال","Primeira Liga","🇵🇹"],
+["لیگ اروپا","Europa League","🌍"],
+["لیگ کنفرانس اروپا","Conference League","🌍"],
+["جام جهانی","World Cup","🌎"],
+["کوپا آمریکا","Copa America","🏆"],
+["لیگ برتر ایران","Persian Gulf Pro League","🇮🇷"],
+["جام ملت‌های اروپا","UEFA Euro","🇪🇺"]
 ];
 
-function renderLeagues(){
- const html=leagues.map(l=>`
-  <div class="card league-card">
-   <div class="league-icon">${l.icon}</div>
-   <h3>${l.name}</h3>
-   <p>${l.en}</p>
-  </div>
- `).join("");
- document.getElementById("homeLeagues").innerHTML=html.slice(0,leagues.length);
- document.getElementById("allLeagues").innerHTML=html;
+function leagueHTML(){
+return leagues.map(l=>`
+<div class="card league-card">
+<div class="league-icon">${l[2]}</div>
+<h3>${l[0]}</h3><p>${l[1]}</p>
+</div>`).join("");
 }
+document.getElementById("homeLeagues").innerHTML=leagueHTML();
+document.getElementById("allLeagues").innerHTML=leagueHTML();
 
 function showPage(id,btn){
- document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
- document.getElementById(id).classList.add("active");
- document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
- btn.classList.add("active");
- window.scrollTo({top:0,behavior:"smooth"});
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
+window.scrollTo({top:0,behavior:"smooth"});
 }
 
 function searchSite(){
- const q=document.getElementById("searchInput").value.trim().toLowerCase();
- if(!q)return;
- const found=leagues.find(l=>
-  l.name.toLowerCase().includes(q) ||
-  l.en.toLowerCase().includes(q)
- );
- if(found){
-  const btn=[...document.querySelectorAll("nav button")]
-    .find(b=>b.textContent.includes("لیگ‌ها"));
-  showPage("leagues",btn);
- }
+const q=document.getElementById("searchInput").value.trim().toLowerCase();
+if(!q)return;
+const found=leagues.some(l=>l[0].toLowerCase().includes(q)||l[1].toLowerCase().includes(q));
+if(found){
+const btn=[...document.querySelectorAll("nav button")].find(b=>b.textContent.includes("لیگ‌ها"));
+showPage("leagues",btn);
 }
-
-renderLeagues();
+}
 </script>
-
 </body>
 </html>
