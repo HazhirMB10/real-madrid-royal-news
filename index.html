@@ -4,78 +4,237 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>REAL MADRID | ROYAL NEWS</title>
+<meta name="theme-color" content="#071426">
+<title>FOOTBALL 360 | The World of Football</title>
 
 <style>
+:root{
+  --bg:#071426;
+  --panel:#10243d;
+  --panel2:#142c49;
+  --gold:#e4bd59;
+  --text:#f5f7fb;
+  --muted:#9eacc0;
+  --line:#263b55;
+  --green:#36d399;
+}
 *{box-sizing:border-box}
-body{margin:0;background:#071426;color:white;font-family:Tahoma,Arial}
-header{background:#0d2038;text-align:center;padding:24px;border-bottom:2px solid #c9a646}
-.logo{font-size:27px;color:#e5c66a;font-weight:bold}
-.subtitle{font-size:12px;color:#bbb;margin-top:8px}
-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;background:#102642;padding:12px;position:sticky;top:0;z-index:5}
-button{cursor:pointer;font-family:inherit}
-nav button{background:#183451;color:white;border:1px solid #c9a646;padding:10px;border-radius:7px}
-nav button:hover,nav button.active{background:#c9a646;color:#071426}
-.container{max-width:1150px;margin:auto;padding:16px}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Tahoma,Arial,sans-serif;
+}
+button,input{font:inherit}
+button{cursor:pointer}
+header{
+  background:linear-gradient(120deg,#102746,#071426);
+  border-bottom:1px solid var(--line);
+  padding:18px 5%;
+}
+.top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+}
+.brand{
+  font-size:27px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+.brand span{color:var(--gold)}
+.tagline{
+  color:var(--muted);
+  font-size:11px;
+  margin-top:5px;
+  letter-spacing:2px;
+}
+.search{
+  background:#071426;
+  border:1px solid var(--line);
+  border-radius:25px;
+  padding:11px 16px;
+  color:white;
+  width:min(300px,100%);
+  outline:none;
+}
+nav{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:13px 5%;
+  background:#0b1b30;
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+nav button{
+  white-space:nowrap;
+  border:0;
+  background:transparent;
+  color:#c3cede;
+  padding:10px 15px;
+  border-radius:8px;
+}
+nav button.active,nav button:hover{
+  color:#111;
+  background:var(--gold);
+}
+main{max-width:1250px;margin:auto;padding:25px 16px}
+.hero{
+  background:linear-gradient(110deg,#173657,#0c1b30 70%);
+  border:1px solid #304766;
+  border-radius:18px;
+  padding:30px;
+  margin-bottom:24px;
+  position:relative;
+  overflow:hidden;
+}
+.hero h1{font-size:clamp(25px,5vw,42px);margin:0 0 12px}
+.hero h1 span{color:var(--gold)}
+.hero p{color:#bdc9d9;line-height:2;max-width:650px}
+.hero-label{
+  display:inline-block;
+  background:#263d54;
+  color:var(--gold);
+  padding:7px 12px;
+  border-radius:20px;
+  font-size:12px;
+}
+.section{margin:28px 0}
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:15px;
+}
+.section-title h2{font-size:19px;margin:0}
+.section-title span{color:var(--gold);font-size:12px}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+  gap:12px;
+}
+.card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:13px;
+  padding:17px;
+  transition:.2s;
+}
+.card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.league-card{text-align:center;min-height:115px}
+.league-icon{font-size:29px;margin-bottom:10px}
+.league-card h3{font-size:14px;margin:0}
+.league-card p{font-size:11px;color:var(--muted);margin:7px 0 0}
+.match-list{display:grid;gap:10px}
+.match{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:10px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:15px;
+}
+.team{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-weight:bold;
+  font-size:13px;
+}
+.team:last-child{justify-content:flex-end}
+.crest{
+  width:34px;height:34px;
+  border-radius:50%;
+  display:grid;place-items:center;
+  background:#203c5c;
+  color:var(--gold);
+  font-size:11px;
+  flex-shrink:0;
+}
+.score{text-align:center;min-width:75px}
+.score strong{font-size:20px}
+.score small{display:block;color:var(--muted);font-size:10px;margin-top:5px}
+.status{
+  color:var(--green);
+  font-size:10px;
+  display:block;
+  margin-bottom:4px;
+}
+.pills{display:flex;gap:8px;flex-wrap:wrap}
+.pill{
+  border:1px solid var(--line);
+  background:var(--panel);
+  color:#dce4ef;
+  padding:9px 14px;
+  border-radius:20px;
+  font-size:12px;
+}
+.pill.active{background:var(--gold);color:#111;border-color:var(--gold)}
+.feature{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:13px;
+}
+.feature .card h3{color:var(--gold);margin:0 0 10px;font-size:15px}
+.feature .card p{color:var(--muted);font-size:12px;line-height:2;margin:0}
+.video-placeholder{
+  min-height:155px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#1a3858,#09182a);
+  display:grid;
+  place-items:center;
+  text-align:center;
+  color:var(--muted);
+  border:1px dashed #49617d;
+  padding:15px;
+}
+.play{
+  font-size:35px;
+  color:var(--gold);
+  margin-bottom:8px;
+}
+.notice{
+  color:var(--muted);
+  font-size:12px;
+  line-height:2;
+  padding:13px;
+  border-right:3px solid var(--gold);
+  background:#10243d;
+  border-radius:8px;
+}
 .page{display:none}
 .page.active{display:block}
-.title{text-align:center;color:#e5c66a;margin:25px 0}
-.hero{background:linear-gradient(140deg,#183451,#071426);border:1px solid #c9a646;border-radius:13px;text-align:center;padding:40px 15px}
-.hero h1{color:#e5c66a}
-.hero p{line-height:2;color:#ddd}
-.gold{background:#c9a646;color:#071426;border:0;padding:12px 18px;border-radius:7px;font-weight:bold}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:13px}
-.card{background:#102642;border:1px solid #294765;border-radius:10px;padding:16px}
-.card h3{color:#e5c66a}
-.card p{line-height:1.9;color:#ddd;font-size:13px}
-.notice{background:#102642;border-right:4px solid #c9a646;padding:13px;margin:15px 0;line-height:1.9;color:#ddd}
-.search{width:100%;padding:13px;background:#102642;color:white;border:1px solid #c9a646;border-radius:8px;margin-bottom:16px;font-family:inherit}
-.player-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:13px}
-.player-card{background:#102642;border:1px solid #294765;border-radius:10px;overflow:hidden;text-align:center;cursor:pointer}
-.player-card:hover{border-color:#e5c66a}
-.player-card img{width:100%;height:200px;object-fit:cover;background:#183451}
-.player-card h3{font-size:14px;color:#e5c66a;direction:ltr;padding:0 5px}
-.player-card p{font-size:12px;color:#ddd}
-.number{display:inline-block;background:#c9a646;color:#071426;padding:5px 12px;border-radius:5px;margin:5px;font-weight:bold}
-.profile{background:#102642;border:1px solid #c9a646;border-radius:12px;overflow:hidden}
-.profile-top{text-align:center;padding:22px;background:linear-gradient(140deg,#183451,#071426)}
-.profile-top img{width:175px;height:210px;object-fit:cover;border:2px solid #c9a646;border-radius:10px}
-.profile-top h2{color:#e5c66a;direction:ltr}
-.info-grid,.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;padding:12px}
-.info-box{background:#183451;border-radius:8px;text-align:center;padding:15px}
-.info-box small{display:block;color:#aaa;margin-bottom:8px}
-.info-box strong{color:#e5c66a;font-size:13px}
-.stats-title{text-align:center;color:#e5c66a;margin:25px 0 10px}
-.stat-card{background:linear-gradient(145deg,#183451,#0d2038);border:1px solid #b99a43;border-radius:10px;text-align:center;padding:17px 7px}
-.stat-icon{font-size:24px}
-.stat-value{font-size:25px;color:#e5c66a;font-weight:bold;margin:10px}
-.stat-label{font-size:13px}
-.stat-status{font-size:10px;color:#aaa;margin-top:9px}
-.back{margin:15px;background:#c9a646;color:#071426;border:0;padding:12px 20px;border-radius:7px}
-.empty{text-align:center;background:#102642;padding:25px;border-radius:9px;color:#bbb;line-height:2}
-footer{text-align:center;background:#0d2038;border-top:2px solid #c9a646;padding:25px;color:#e5c66a;margin-top:35px}
-footer p{color:#aaa;font-size:12px}
-.refresh{display:block;margin:15px auto;background:#c9a646;color:#071426;border:0;padding:11px 20px;border-radius:7px;font-weight:bold}
-.table-wrap{overflow-x:auto;background:#102642;border-radius:10px;margin-top:15px}
-.league-table{width:100%;border-collapse:collapse;min-width:540px;text-align:center}
-.league-table th{background:#183451;color:#e5c66a;padding:13px 8px}
-.league-table td{padding:11px 7px;border-bottom:1px solid #294765;font-size:13px}
-.league-table tr.real-madrid{background:#594b20;font-weight:bold}
-.team-name{display:flex;align-items:center;justify-content:flex-start;gap:8px;text-align:right;white-space:nowrap}
-.team-name img{width:24px;height:24px;object-fit:contain}
-.match-card{background:#102642;border:1px solid #294765;border-radius:10px;padding:16px;margin:12px 0;text-align:center}
-.match-teams{display:flex;justify-content:space-around;align-items:center;gap:10px}
-.match-team{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px}
-.match-team img{width:42px;height:42px;object-fit:contain}
-.match-team strong{font-size:13px}
-.match-score{color:#e5c66a;font-size:22px;font-weight:bold;white-space:nowrap}
-.match-meta{font-size:12px;color:#bbb;line-height:2;margin-top:12px}
-.match-status{display:inline-block;color:#e5c66a;font-size:12px;margin-top:8px}
-.api-error{background:#422b2b;border-right:4px solid #d66;padding:15px;border-radius:8px;color:#fff;line-height:2}
-@media(max-width:500px){
-.player-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-.player-card img{height:175px}
-.match-team strong{font-size:11px}
+.empty{
+  padding:25px;
+  text-align:center;
+  color:var(--muted);
+  background:var(--panel);
+  border-radius:12px;
+}
+footer{
+  border-top:1px solid var(--line);
+  padding:28px 15px;
+  text-align:center;
+  color:var(--muted);
+  font-size:12px;
+  line-height:2;
+}
+footer strong{color:var(--gold)}
+@media(max-width:550px){
+  .brand{font-size:22px}
+  .hero{padding:22px}
+  .match{padding:10px 7px;gap:4px}
+  .team{font-size:11px;gap:5px}
+  .crest{width:28px;height:28px}
+  .score strong{font-size:17px}
 }
 </style>
 </head>
@@ -83,436 +242,270 @@ footer p{color:#aaa;font-size:12px}
 <body>
 
 <header>
-<div class="logo">REAL MADRID</div>
-<div class="subtitle">ROYAL NEWS | THE HOME OF MADRIDISMO</div>
+  <div class="top">
+    <div>
+      <div class="brand">FOOTBALL <span>360</span></div>
+      <div class="tagline">THE WORLD OF FOOTBALL</div>
+    </div>
+    <input class="search" id="searchInput"
+      placeholder="جست‌وجوی تیم، بازیکن یا لیگ..."
+      oninput="searchSite()">
+  </div>
 </header>
 
 <nav>
-<button class="active" onclick="showPage('home',this)">خانه</button>
-<button onclick="showPage('news',this)">اخبار</button>
-<button onclick="showPage('matches',this)">مسابقات</button>
-<button onclick="showPage('results',this)">نتایج</button>
-<button onclick="showPage('transfers',this)">نقل‌وانتقالات</button>
-<button onclick="showPage('rumors',this)">شایعات</button>
-<button onclick="showPage('table',this)">جدول لالیگا</button>
-<button onclick="showPage('players',this)">بازیکنان</button>
+  <button class="active" onclick="showPage('home',this)">خانه</button>
+  <button onclick="showPage('matches',this)">مسابقات</button>
+  <button onclick="showPage('leagues',this)">لیگ‌ها</button>
+  <button onclick="showPage('teams',this)">تیم‌ها</button>
+  <button onclick="showPage('players',this)">بازیکنان</button>
+  <button onclick="showPage('stats',this)">آمار و برترین‌ها</button>
+  <button onclick="showPage('videos',this)">ویدئوها</button>
+  <button onclick="showPage('news',this)">اخبار</button>
 </nav>
 
-<main class="container">
+<main>
 
-<section id="home" class="page active">
-<div class="hero">
-<h1>HALA MADRID!</h1>
-<p>به وب‌سایت اختصاصی اخبار و اطلاعات رئال مادرید خوش آمدید.</p>
-<p>اخبار، مسابقات، نتایج، نقل‌وانتقالات و اطلاعات بازیکنان باشگاه.</p>
-<button class="gold" onclick="showPage('players')">مشاهده بازیکنان</button>
+<!-- HOME -->
+<div class="page active" id="home">
+  <section class="hero">
+    <span class="hero-label">WELCOME TO FOOTBALL 360</span>
+    <h1>دنیای فوتبال در <span>یک جا</span></h1>
+    <p>
+      مسابقات، نتایج، لیگ‌ها، تیم‌ها، بازیکنان، آمار،
+      اخبار و ویدئوهای فوتبال جهان؛ همه در یک وب‌سایت.
+    </p>
+  </section>
+
+  <section class="section">
+    <div class="section-title">
+      <h2>🏆 لیگ‌های محبوب</h2>
+      <span>POPULAR LEAGUES</span>
+    </div>
+    <div class="grid" id="homeLeagues"></div>
+  </section>
+
+  <section class="section">
+    <div class="section-title">
+      <h2>⚽ مسابقات</h2>
+      <span>FIXTURES & RESULTS</span>
+    </div>
+    <div class="notice">
+      اطلاعات واقعی مسابقات در مرحله اتصال سرویس آماری نمایش داده خواهد شد.
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-title">
+      <h2>🎬 دنیای ویدئو</h2>
+      <span>FOOTBALL VIDEOS</span>
+    </div>
+    <div class="feature">
+      <div class="video-placeholder">
+        <div><div class="play">▶</div>پخش زنده رسمی مسابقات</div>
+      </div>
+      <div class="video-placeholder">
+        <div><div class="play">▶</div>گل‌ها و خلاصه بازی‌ها</div>
+      </div>
+      <div class="video-placeholder">
+        <div><div class="play">▶</div>بهترین لحظات فوتبال</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-title">
+      <h2>🌍 امکانات سایت</h2>
+      <span>EXPLORE FOOTBALL</span>
+    </div>
+    <div class="feature">
+      <div class="card"><h3>لیگ‌ها</h3><p>جدول، مسابقات و آمار رقابت‌های مختلف.</p></div>
+      <div class="card"><h3>تیم‌ها</h3><p>اطلاعات باشگاه‌ها، ترکیب و افتخارات.</p></div>
+      <div class="card"><h3>بازیکنان</h3><p>زندگی‌نامه، آمار فصل و افتخارات فردی.</p></div>
+      <div class="card"><h3>اخبار</h3><p>اخبار و نقل‌وانتقالات فوتبال جهان.</p></div>
+    </div>
+  </section>
 </div>
-<h2 class="title">بخش‌های اصلی</h2>
-<div class="cards">
-<div class="card"><h3>اخبار</h3><p>آخرین اخبار باشگاه</p><button class="gold" onclick="showPage('news')">مشاهده</button></div>
-<div class="card"><h3>مسابقات</h3><p>برنامه مسابقات تیم</p><button class="gold" onclick="showPage('matches')">مشاهده</button></div>
-<div class="card"><h3>نتایج</h3><p>نتایج بازی‌های گذشته</p><button class="gold" onclick="showPage('results')">مشاهده</button></div>
-<div class="card"><h3>بازیکنان</h3><p>فهرست بازیکنان و اطلاعات اختصاصی</p><button class="gold" onclick="showPage('players')">مشاهده</button></div>
+
+<!-- MATCHES -->
+<div class="page" id="matches">
+  <section class="section">
+    <div class="section-title">
+      <h2>⚽ مسابقات فوتبال</h2>
+      <span>MATCH CENTER</span>
+    </div>
+    <div class="pills">
+      <button class="pill active">همه مسابقات</button>
+      <button class="pill">زنده</button>
+      <button class="pill">امروز</button>
+      <button class="pill">آینده</button>
+      <button class="pill">نتایج</button>
+    </div>
+    <div class="empty" style="margin-top:15px">
+      مسابقات و نتایج پس از اتصال API در این قسمت نمایش داده می‌شوند.
+    </div>
+  </section>
 </div>
-<div class="notice">وب‌سایت هواداری مستقل رئال مادرید</div>
-</section>
 
-<section id="news" class="page">
-<h2 class="title">اخبار رئال مادرید</h2>
-<div class="empty">بخش اخبار آماده اتصال به منبع خبری است.</div>
-</section>
+<!-- LEAGUES -->
+<div class="page" id="leagues">
+  <section class="section">
+    <div class="section-title">
+      <h2>🏆 تمام لیگ‌ها و رقابت‌ها</h2>
+      <span>LEAGUES</span>
+    </div>
+    <div class="grid" id="allLeagues"></div>
+  </section>
+</div>
 
-<section id="matches" class="page">
-<h2 class="title">مسابقات پیش رو</h2>
-<button class="refresh" onclick="loadMatches()">به‌روزرسانی مسابقات</button>
-<div id="matchesContent" class="empty">در حال دریافت مسابقات...</div>
-</section>
+<!-- TEAMS -->
+<div class="page" id="teams">
+  <section class="section">
+    <div class="section-title">
+      <h2>🛡️ تیم‌های فوتبال</h2>
+      <span>CLUBS & NATIONAL TEAMS</span>
+    </div>
+    <div class="empty">
+      فهرست تیم‌ها، نشان باشگاه، مربی، ورزشگاه، ترکیب و افتخارات
+      در مرحله بعد به اطلاعات واقعی متصل می‌شود.
+    </div>
+  </section>
+</div>
 
-<section id="results" class="page">
-<h2 class="title">آخرین نتایج</h2>
-<button class="refresh" onclick="loadResults()">به‌روزرسانی نتایج</button>
-<div id="resultsContent" class="empty">در حال دریافت نتایج...</div>
-</section>
+<!-- PLAYERS -->
+<div class="page" id="players">
+  <section class="section">
+    <div class="section-title">
+      <h2>👤 بازیکنان فوتبال</h2>
+      <span>PLAYER DATABASE</span>
+    </div>
+    <div class="empty">
+      پروفایل بازیکنان شامل عکس، سن، ملیت، قد، پست،
+      شماره پیراهن، آمار و افتخارات خواهد بود.
+    </div>
+  </section>
+</div>
 
-<section id="transfers" class="page">
-<h2 class="title">نقل‌وانتقالات</h2>
-<div class="empty">اخبار رسمی نقل‌وانتقالات در این قسمت نمایش داده می‌شود.</div>
-</section>
+<!-- STATS -->
+<div class="page" id="stats">
+  <section class="section">
+    <div class="section-title">
+      <h2>📊 آمار و برترین‌های لیگ‌ها</h2>
+      <span>STATISTICS</span>
+    </div>
+    <div class="feature">
+      <div class="card"><h3>⚽ ۱۰ گل‌زن برتر</h3><p>رتبه‌بندی گل‌زنان هر لیگ.</p></div>
+      <div class="card"><h3>🎯 ۱۰ پاسور برتر</h3><p>بیشترین پاس گل در هر رقابت.</p></div>
+      <div class="card"><h3>🧤 بهترین دروازه‌بان‌ها</h3><p>آمار کلین‌شیت و عملکرد دروازه‌بان‌ها.</p></div>
+      <div class="card"><h3>🟨 آمار انضباطی</h3><p>کارت‌های زرد و قرمز بازیکنان.</p></div>
+    </div>
+  </section>
+</div>
 
-<section id="rumors" class="page">
-<h2 class="title">شایعات</h2>
-<div class="empty">شایعات نقل‌وانتقالات با مشخص‌کردن غیررسمی بودن منتشر می‌شوند.</div>
-</section>
+<!-- VIDEOS -->
+<div class="page" id="videos">
+  <section class="section">
+    <div class="section-title">
+      <h2>🎬 ویدئوهای فوتبال</h2>
+      <span>FOOTBALL TV</span>
+    </div>
+    <div class="feature">
+      <div class="card">
+        <div class="video-placeholder"><div><div class="play">▶</div>LIVE MATCH</div></div>
+        <h3>پخش زنده مسابقات</h3>
+        <p>لینک پخش رسمی مسابقات دارای مجوز.</p>
+      </div>
+      <div class="card">
+        <div class="video-placeholder"><div><div class="play">▶</div>GOAL REPLAYS</div></div>
+        <h3>بازپخش گل‌ها</h3>
+        <p>ویدئوهای رسمی گل‌ها برای تماشای دوباره.</p>
+      </div>
+      <div class="card">
+        <div class="video-placeholder"><div><div class="play">▶</div>HIGHLIGHTS</div></div>
+        <h3>خلاصه مسابقات</h3>
+        <p>لحظات مهم و صحنه‌های منتخب بازی‌ها.</p>
+      </div>
+    </div>
+    <p class="notice" style="margin-top:15px">
+      ویدئوها در مراحل بعد از منابع رسمی و دارای مجوز نمایش داده خواهند شد.
+    </p>
+  </section>
+</div>
 
-<section id="table" class="page">
-<h2 class="title">جدول لالیگا</h2>
-<button class="refresh" onclick="loadTable()">به‌روزرسانی جدول</button>
-<div id="tableContent" class="empty">در حال دریافت جدول لالیگا...</div>
-</section>
-
-<section id="players" class="page">
-<h2 class="title">بازیکنان رئال مادرید</h2>
-<input id="playerSearch" class="search" placeholder="جست‌وجوی بازیکن..." oninput="searchPlayers()">
-<div id="playersList" class="player-grid"></div>
-</section>
-
-<section id="playerDetail" class="page">
-<div id="playerProfile"></div>
-</section>
+<!-- NEWS -->
+<div class="page" id="news">
+  <section class="section">
+    <div class="section-title">
+      <h2>📰 اخبار فوتبال جهان</h2>
+      <span>WORLD FOOTBALL NEWS</span>
+    </div>
+    <div class="empty">
+      اخبار لیگ‌ها، باشگاه‌ها، نقل‌وانتقالات و مصاحبه‌ها
+      پس از اتصال منبع خبری معتبر نمایش داده خواهند شد.
+    </div>
+  </section>
+</div>
 
 </main>
 
 <footer>
-<strong>REAL MADRID | ROYAL NEWS</strong>
-<p>HALA MADRID Y NADA MÁS</p>
-<p>Independent fan website</p>
+  <strong>FOOTBALL 360</strong><br>
+  THE WORLD OF FOOTBALL<br>
+  یک وب‌سایت مستقل فوتبال
 </footer>
 
 <script>
-
-const API_URL="https://royal-news-api-2026.hazhiralizadeh3039.workers.dev/";
-const SEASON="2026";
-const REAL_MADRID_ID=86;
-
-let scorerStats={};
-let scorerStatsLoaded=false;
-
-async function apiRequest(endpoint){
-  const url=new URL(API_URL);
-  url.searchParams.set("endpoint",endpoint);
-  url.searchParams.set("season",SEASON);
-  const response=await fetch(url.toString());
-  const data=await response.json();
-  if(!response.ok)throw new Error(data.message||data.error||"خطا در دریافت اطلاعات");
-  if(data.error)throw new Error(data.message||data.error);
-  return data;
-}
-
-function normalizeName(name){
-  return String(name).normalize("NFD")
-    .replace(/[\u0300-\u036f]/g,"")
-    .toLowerCase().trim();
-}
-
-async function loadScorers(){
-  if(scorerStatsLoaded)return;
-  const data=await apiRequest("scorers");
-  scorerStats={};
-  (data.scorers||[]).forEach(item=>{
-    const player=item.player;
-    if(!player||!player.name)return;
-    scorerStats[normalizeName(player.name)]={
-      matches:item.playedMatches??null,
-      goals:item.goals??null,
-      assists:item.assists??null,
-      penalties:item.penalties??null
-    };
-  });
-  scorerStatsLoaded=true;
-}
-
-function formatDate(date){
-  if(!date)return "تاریخ نامشخص";
-  return new Date(date).toLocaleString("fa-IR",{
-    year:"numeric",month:"long",day:"numeric",
-    hour:"2-digit",minute:"2-digit"
-  });
-}
-
-function showError(element,message){
-  element.innerHTML=`
-  <div class="api-error">
-    خطا در دریافت اطلاعات از سرور.<br>
-    ${message}<br>
-    لطفاً چند لحظه بعد دوباره امتحان کنید.
-  </div>`;
-}
-
-async function loadTable(){
-  const area=document.getElementById("tableContent");
-  area.innerHTML="در حال دریافت جدول لالیگا...";
-  try{
-    const data=await apiRequest("standings");
-    const standings=data.standings||[];
-    const total=standings.find(s=>s.type==="TOTAL")||standings[0];
-    if(!total||!total.table||!total.table.length)
-      throw new Error("جدول در پاسخ سرور پیدا نشد.");
-
-    let html=`
-    <div class="notice">
-      لیگ: ${data.competition?.name||"Primera Division"}
-      <br>فصل: ${data.season?.startDate||"2026"} تا ${data.season?.endDate||"2027"}
-      <br>هفته: ${data.season?.currentMatchday||"نامشخص"}
-    </div>
-    <div class="table-wrap"><table class="league-table">
-    <thead><tr>
-      <th>رتبه</th><th>تیم</th><th>بازی</th><th>برد</th>
-      <th>مساوی</th><th>باخت</th><th>تفاضل</th><th>امتیاز</th>
-    </tr></thead><tbody>`;
-
-    total.table.forEach(team=>{
-      const isMadrid=team.team.id===REAL_MADRID_ID;
-      html+=`
-      <tr class="${isMadrid?"real-madrid":""}">
-        <td>${team.position}</td>
-        <td><div class="team-name">
-          <img src="${team.team.crest}" alt="">
-          ${team.team.shortName||team.team.name}
-        </div></td>
-        <td>${team.playedGames}</td><td>${team.won}</td>
-        <td>${team.draw}</td><td>${team.lost}</td>
-        <td>${team.goalDifference}</td><td><strong>${team.points}</strong></td>
-      </tr>`;
-    });
-    html+="</tbody></table></div>";
-    area.innerHTML=html;
-  }catch(error){showError(area,error.message);}
-}
-
-function createMatchCard(match){
-  const home=match.homeTeam||{};
-  const away=match.awayTeam||{};
-  const finished=match.status==="FINISHED";
-  let score="VS";
-  if(finished){
-    const goals=match.score?.fullTime;
-    if(goals&&goals.home!==null&&goals.away!==null)
-      score=`${goals.home} - ${goals.away}`;
-  }
-  return `
-  <div class="match-card">
-    <div class="match-teams">
-      <div class="match-team">
-        <img src="${home.crest||""}" alt="">
-        <strong>${home.shortName||home.name||"تیم میزبان"}</strong>
-      </div>
-      <div class="match-score">${score}</div>
-      <div class="match-team">
-        <img src="${away.crest||""}" alt="">
-        <strong>${away.shortName||away.name||"تیم مهمان"}</strong>
-      </div>
-    </div>
-    <div class="match-meta">
-      ${match.competition?.name||"مسابقات فوتبال"}<br>${formatDate(match.utcDate)}
-    </div>
-    <div class="match-status">
-      ${finished?"پایان مسابقه":match.status==="IN_PLAY"?"در حال برگزاری":"برنامه‌ریزی شده"}
-    </div>
-  </div>`;
-}
-
-async function loadMatches(){
-  const area=document.getElementById("matchesContent");
-  area.innerHTML="در حال دریافت مسابقات...";
-  try{
-    const data=await apiRequest("matches");
-    const matches=(data.matches||[])
-      .filter(m=>["SCHEDULED","TIMED","IN_PLAY"].includes(m.status)&&
-        (m.homeTeam?.id===REAL_MADRID_ID||m.awayTeam?.id===REAL_MADRID_ID))
-      .sort((a,b)=>new Date(a.utcDate)-new Date(b.utcDate)).slice(0,10);
-    if(!matches.length){
-      area.innerHTML="در حال حاضر مسابقه آینده‌ای در اطلاعات دریافتی پیدا نشد.";
-      return;
-    }
-    area.innerHTML=matches.map(createMatchCard).join("");
-  }catch(error){showError(area,error.message);}
-}
-
-async function loadResults(){
-  const area=document.getElementById("resultsContent");
-  area.innerHTML="در حال دریافت نتایج...";
-  try{
-    const data=await apiRequest("matches");
-    const matches=(data.matches||[])
-      .filter(m=>m.status==="FINISHED"&&
-        (m.homeTeam?.id===REAL_MADRID_ID||m.awayTeam?.id===REAL_MADRID_ID))
-      .sort((a,b)=>new Date(b.utcDate)-new Date(a.utcDate)).slice(0,10);
-    if(!matches.length){
-      area.innerHTML="نتیجه نهایی مسابقه‌ای در اطلاعات دریافتی پیدا نشد.";
-      return;
-    }
-    area.innerHTML=matches.map(createMatchCard).join("");
-  }catch(error){showError(area,error.message);}
-}
-
-const players=[
-["Thibaut Courtois",1,"دروازه‌بان","COURTOIS"],
-["Andriy Lunin",13,"دروازه‌بان","LUNIN"],
-["Raúl Asencio",2,"مدافع","ASENCIO"],
-["Éder Militão",3,"مدافع","MILITAO"],
-["Dean Huijsen",4,"مدافع","HUIJSEN"],
-["Trent Alexander-Arnold",12,"مدافع","TRENT"],
-["Ibrahima Konaté",16,"مدافع","KONATE"],
-["Marc Cucurella",17,"مدافع","CUCURELLA"],
-["Álvaro Carreras",18,"مدافع","CARRERAS"],
-["Antonio Rüdiger",22,"مدافع","RUDIGER"],
-["Ferland Mendy",23,"مدافع","MENDY"],
-["Denzel Dumfries",24,"مدافع","DUMFRIES"],
-["Jude Bellingham",5,"هافبک","BELLINGHAM"],
-["Eduardo Camavinga",6,"هافبک","CAMAVINGA"],
-["Federico Valverde",8,"هافبک","VALVERDE"],
-["Aurélien Tchouaméni",14,"هافبک","TCHOUAMENI"],
-["Arda Güler",15,"هافبک","ARDA_GULER"],
-["Bernardo Silva",20,"هافبک","BERNARDO"],
-["Thiago Pitarch",27,"هافبک","THIAGO"],
-["Vinícius Júnior",7,"مهاجم","VINI_JR"],
-["Endrick",9,"مهاجم","ENDRICK"],
-["Kylian Mbappé",10,"مهاجم","MBAPPE"],
-["Rodrygo Goes",11,"مهاجم","RODRYGO"],
-["Carlos Espí",19,"مهاجم","CARLOS_ESPI"],
-["Brahim Díaz",21,"مهاجم","BRAHIM"],
-["Yan Diomande",25,"مهاجم","DIOMANDE"]
+const leagues=[
+ {name:"لیگ قهرمانان اروپا",en:"UEFA Champions League",icon:"🏆"},
+ {name:"لیگ برتر انگلیس",en:"Premier League",icon:"🏴"},
+ {name:"لالیگا اسپانیا",en:"La Liga",icon:"🇪🇸"},
+ {name:"بوندس‌لیگا آلمان",en:"Bundesliga",icon:"🇩🇪"},
+ {name:"سری آ ایتالیا",en:"Serie A",icon:"🇮🇹"},
+ {name:"لیگ یک فرانسه",en:"Ligue 1",icon:"🇫🇷"},
+ {name:"اردیویسه هلند",en:"Eredivisie",icon:"🇳🇱"},
+ {name:"لیگ پرتغال",en:"Primeira Liga",icon:"🇵🇹"},
+ {name:"لیگ اروپا",en:"Europa League",icon:"🌍"},
+ {name:"لیگ کنفرانس اروپا",en:"Conference League",icon:"🌍"},
+ {name:"جام جهانی",en:"World Cup",icon:"🌎"},
+ {name:"کوپا آمریکا",en:"Copa America",icon:"🏆"}
 ];
 
+function renderLeagues(){
+ const html=leagues.map(l=>`
+  <div class="card league-card">
+   <div class="league-icon">${l.icon}</div>
+   <h3>${l.name}</h3>
+   <p>${l.en}</p>
+  </div>
+ `).join("");
+ document.getElementById("homeLeagues").innerHTML=html.slice(0,leagues.length);
+ document.getElementById("allLeagues").innerHTML=html;
+}
+
 function showPage(id,btn){
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-  document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
-  if(btn)btn.classList.add("active");
-  window.scrollTo({top:0,behavior:"smooth"});
-  if(id==="players")renderPlayers();
-  if(id==="table")loadTable();
-  if(id==="matches")loadMatches();
-  if(id==="results")loadResults();
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+ btn.classList.add("active");
+ window.scrollTo({top:0,behavior:"smooth"});
 }
 
-function imageURL(code){
-  const officialPhotos={
-    BERNARDO:"https://assets.realmadrid.com/is/image/realmadrid/BERRNARDO-SILVA_POSE_1500X2000?$Desktop$=&fit=wrap&wid=600",
-    DIOMANDE:"https://assets.realmadrid.com/is/image/realmadrid/YAN-DIOMANDE_POSE_1500X2000?$Desktop$=&fit=wrap&wid=600",
-    CARLOS_ESPI:"https://assets.realmadrid.com/is/image/realmadrid/ESPI_POSE_1500X2000?$Desktop$=&fit=wrap&wid=600",
-    VINI_JR:"https://assets.realmadrid.com/is/image/realmadrid/VINI_POSE_1500X2000?$Desktop$=&fit=wrap&wid=600",
-    ARDA_GULER:"https://assets.realmadrid.com/is/image/realmadrid/ARDA_POSE_1500X2000?$Desktop$=&fit=wrap&wid=600"
-  };
-  if(officialPhotos[code])return officialPhotos[code];
-  return "https://assets.realmadrid.com/is/image/realmadrid/"+code+"_POSE_1500X2000?$Desktop$=&fit=wrap&wid=600";
+function searchSite(){
+ const q=document.getElementById("searchInput").value.trim().toLowerCase();
+ if(!q)return;
+ const found=leagues.find(l=>
+  l.name.toLowerCase().includes(q) ||
+  l.en.toLowerCase().includes(q)
+ );
+ if(found){
+  const btn=[...document.querySelectorAll("nav button")]
+    .find(b=>b.textContent.includes("لیگ‌ها"));
+  showPage("leagues",btn);
+ }
 }
 
-function renderPlayers(list=players){
-  const area=document.getElementById("playersList");
-  area.innerHTML="";
-  list.forEach(p=>{
-    const card=document.createElement("div");
-    card.className="player-card";
-    card.innerHTML=`
-      <img src="${imageURL(p[3])}" alt="${p[0]}" loading="lazy">
-      <h3>${p[0]}</h3>
-      <div class="number">${p[1]}</div>
-      <p>${p[2]}</p>`;
-    const img=card.querySelector("img");
-    img.onerror=function(){
-      this.onerror=null;
-      this.src="https://placehold.co/600x800/183451/e5c66a?text=REAL+MADRID";
-    };
-    card.onclick=()=>openPlayer(p);
-    area.appendChild(card);
-  });
-}
-
-function searchPlayers(){
-  const q=document.getElementById("playerSearch").value.toLowerCase().trim();
-  renderPlayers(players.filter(p=>
-    p[0].toLowerCase().includes(q)||p[2].includes(q)||String(p[1]).includes(q)
-  ));
-}
-
-function statCard(icon,label){
-  return `
-  <div class="stat-card">
-    <div class="stat-icon">${icon}</div>
-    <div class="stat-value">—</div>
-    <div class="stat-label">${label}</div>
-    <div class="stat-status">اطلاعات در دسترس نیست</div>
-  </div>`;
-}
-
-function seasonStatCard(icon,label,value,available){
-  return `
-  <div class="stat-card">
-    <div class="stat-icon">${icon}</div>
-    <div class="stat-value">${value===null||value===undefined?"—":value}</div>
-    <div class="stat-label">${label}</div>
-    <div class="stat-status">
-      ${available?"آمار ثبت‌شده در لالیگا":"در فهرست ۱۰ گلزن برتر نیست"}
-    </div>
-  </div>`;
-}
-
-async function openPlayer(p){
-  showPage("playerDetail");
-  const area=document.getElementById("playerProfile");
-  area.innerHTML='<div class="empty">در حال دریافت آمار بازیکن...</div>';
-
-  try{
-    await loadScorers();
-  }catch(error){
-    console.error("Scorers API:",error);
-  }
-
-  const stats=scorerStats[normalizeName(p[0])];
-  const hasStats=!!stats;
-
-  area.innerHTML=`
-  <div class="profile">
-    <div class="profile-top">
-      <img src="${imageURL(p[3])}" alt="${p[0]}"
-      onerror="this.onerror=null;this.src='https://placehold.co/600x800/183451/e5c66a?text=REAL+MADRID'">
-      <h2>${p[0]}</h2>
-      <div class="number">${p[1]}</div>
-      <p>${p[2]} | REAL MADRID</p>
-    </div>
-
-    <h3 class="title">اطلاعات بازیکن</h3>
-    <div class="info-grid">
-      <div class="info-box"><small>نام</small><strong>${p[0]}</strong></div>
-      <div class="info-box"><small>شماره پیراهن</small><strong>${p[1]}</strong></div>
-      <div class="info-box"><small>پست</small><strong>${p[2]}</strong></div>
-      <div class="info-box"><small>باشگاه</small><strong>Real Madrid</strong></div>
-    </div>
-
-    <h3 class="stats-title">آمار فصل جاری ۲۰۲۶/۲۷</h3>
-    <div class="stats-grid">
-      ${seasonStatCard("⚽","بازی‌های لالیگا",stats?.matches,hasStats)}
-      ${seasonStatCard("🥅","گل‌های لالیگا",stats?.goals,hasStats)}
-      ${seasonStatCard("🎯","پاس گل‌های لالیگا",stats?.assists,hasStats)}
-      ${seasonStatCard("⚽","گل‌های پنالتی",stats?.penalties,hasStats)}
-    </div>
-
-    <div class="notice">
-      منبع آمار: football-data.org
-      <br>اطلاعات مربوط به لالیگا است، نه تمام رقابت‌ها.
-      <br>فقط ۱۰ گلزن برتر در پاسخ منبع نمایش داده می‌شوند.
-      <br>خط تیره برای سایر بازیکنان به معنی صفر گل نیست.
-    </div>
-
-    <h3 class="stats-title">آمار دوران حرفه‌ای</h3>
-    <div class="stats-grid">
-      ${statCard("⚽","مجموع بازی‌ها")}
-      ${statCard("🥅","مجموع گل‌ها")}
-      ${statCard("🎯","مجموع پاس گل")}
-      ${statCard("⏱️","مجموع دقایق")}
-      ${statCard("🟨","مجموع کارت زرد")}
-      ${statCard("🟥","مجموع کارت قرمز")}
-    </div>
-
-    <h3 class="title">اطلاعات تکمیلی</h3>
-    <div class="info-grid">
-      <div class="info-box"><small>افتخارات فردی</small><strong>در انتظار اطلاعات</strong></div>
-      <div class="info-box"><small>افتخارات تیمی</small><strong>در انتظار اطلاعات</strong></div>
-      <div class="info-box"><small>باشگاه‌های قبلی</small><strong>در انتظار اطلاعات</strong></div>
-      <div class="info-box"><small>اطلاعات فیزیکی</small><strong>در انتظار اطلاعات</strong></div>
-    </div>
-
-    <button class="back" onclick="backToPlayers()">بازگشت به بازیکنان</button>
-  </div>`;
-}
-
-function backToPlayers(){
-  showPage("players");
-}
-
-renderPlayers();
-
+renderLeagues();
 </script>
+
 </body>
 </html>
