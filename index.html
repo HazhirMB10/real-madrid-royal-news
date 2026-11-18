@@ -3,484 +3,471 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#ffffff">
-<title>FOOTBALL 360 | World Football</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FOOTBALL 360</title>
+
 <style>
-:root{--bg:#f4f4f4;--white:#fff;--black:#111;--gray:#777;--line:#e5e5e5;--green:#16875b;--red:#c73535}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--black);font-family:Tahoma,Arial,sans-serif}
-header{background:white;padding:17px 5%;border-bottom:1px solid var(--line)}
-.top{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
-.brand{font-size:28px;font-weight:900;letter-spacing:1px}
-.brand span{color:#777}
-.tagline{font-size:10px;color:#777;letter-spacing:2px;margin-top:5px}
-.search{padding:12px 15px;border:1px solid var(--line);border-radius:25px;width:min(320px,100%);background:#f5f5f5;outline:none}
-nav{display:flex;gap:5px;overflow-x:auto;background:#111;padding:10px 4%;position:sticky;top:0;z-index:20}
-nav button{border:0;background:transparent;color:#ddd;padding:12px 14px;white-space:nowrap;border-radius:6px}
-nav button.active,nav button:hover{background:white;color:#111}
-main{max-width:1250px;margin:auto;padding:22px 15px}
-.page{display:none}.page.active{display:block}
-.hero{background:#111;color:white;border-radius:15px;padding:30px;margin-bottom:25px}
-.hero h1{font-size:clamp(27px,5vw,43px);margin:15px 0}
-.hero p{line-height:2;color:#ddd}
-.label{font-size:11px;color:#aaa;letter-spacing:2px}
-.section{margin:28px 0}
-.section-title{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:15px}
-.section-title h2{font-size:19px;margin:0}
-.section-title span{font-size:11px;color:#888}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:13px}
-.card{background:white;border:1px solid var(--line);border-radius:12px;padding:16px}
-.card h3{font-size:14px}
-.league-card{text-align:center;cursor:pointer;min-height:155px;display:flex;flex-direction:column;justify-content:center;align-items:center}
-.league-logo{width:72px;height:72px;object-fit:contain;margin-bottom:10px}
-.league-card h3{margin:0;font-size:13px}
-.league-card p{font-size:10px;color:#888}
-.feature{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:13px}
-.page-heading{background:white;border:1px solid var(--line);padding:18px;border-radius:12px;margin-bottom:17px}
-.notice{background:white;border:1px solid var(--line);border-right:3px solid #111;padding:14px;border-radius:8px;color:#555;font-size:12px;line-height:2}
-.empty{background:white;border:1px solid var(--line);padding:22px;text-align:center;border-radius:12px;color:#777;line-height:2}
-.pills{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
-.pill{border:1px solid var(--line);background:white;padding:9px 13px;border-radius:20px;font-size:12px;cursor:pointer}
-.pill.active{background:#111;color:white}
-.select{padding:11px;border:1px solid var(--line);background:white;border-radius:8px;max-width:100%;min-width:180px}
-.table-wrap{overflow-x:auto;background:white;border:1px solid var(--line);border-radius:12px;margin:12px 0}
-table{border-collapse:collapse;width:100%;min-width:650px;text-align:center;font-size:12px}
-th{background:#111;color:white;padding:13px 9px}
-td{padding:12px 8px;border-bottom:1px solid var(--line)}
-tr:hover td{background:#f7f7f7}
-.match{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;background:white;border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:9px}
-.match-team{font-size:12px;font-weight:bold}
-.match-team:last-child{text-align:left}
-.match-score{text-align:center;font-size:17px;font-weight:bold;min-width:70px}
-.match-score small{display:block;font-size:10px;color:#888;font-weight:normal;margin-top:5px}
-.player-row{display:flex;align-items:center;gap:12px;background:white;border-bottom:1px solid var(--line);padding:13px}
-.rank{font-weight:bold;color:#888;width:22px}
-.player-info{flex:1}
-.player-info strong{font-size:13px}
-.player-info small{display:block;color:#888;margin-top:5px;font-size:10px}
-.stat{font-weight:bold;min-width:30px;text-align:center}
-.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:13px}
-.video-card{background:#171717;color:white;border-radius:12px;padding:20px;min-height:145px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
-.play{font-size:35px;margin-bottom:12px}
-.video-card a{color:white;text-decoration:none;border:1px solid #777;padding:8px 12px;border-radius:20px;font-size:11px;margin-top:12px}
-.transfer{background:white;border:1px solid var(--line);padding:15px;border-radius:10px;margin-bottom:10px}
-.transfer strong{font-size:14px}
-.transfer p{font-size:12px;color:#777;line-height:2}
-.tag{display:inline-block;background:#eee;padding:5px 9px;border-radius:20px;font-size:10px;margin-top:6px}
-.tag.official{background:#e4f5ed;color:#16734c}
+body{
+ margin:0;background:#f4f4f4;color:#171717;
+ font-family:Tahoma,Arial,sans-serif
+}
+header{
+ background:#111;color:white;padding:20px 15px;
+ border-bottom:4px solid #c5a45a
+}
+.header-inner{max-width:1200px;margin:auto}
+.logo{font-size:27px;font-weight:bold;letter-spacing:1px}
+.logo span{color:#c5a45a}
+.subtitle{font-size:12px;color:#bbb;margin-top:7px}
+nav{
+ background:#fff;display:flex;gap:5px;padding:10px;
+ overflow-x:auto;border-bottom:1px solid #ddd;
+ position:sticky;top:0;z-index:10
+}
+nav button{
+ border:0;background:#eee;padding:12px 16px;
+ border-radius:5px;white-space:nowrap;font-weight:bold;
+ cursor:pointer;color:#222
+}
+nav button.active,nav button:hover{
+ background:#171717;color:#fff
+}
+.container{max-width:1200px;margin:20px auto;padding:0 12px}
+.page{display:none}
+.page.active{display:block}
+.hero{
+ background:#171717;color:white;padding:25px;
+ border-radius:10px;margin-bottom:18px
+}
+.hero h1{margin:0 0 10px;font-size:25px}
+.hero p{color:#ccc;line-height:1.8;margin:0}
+.grid{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:13px;margin:15px 0
+}
+.card{
+ background:white;border:1px solid #e2e2e2;
+ border-radius:9px;padding:17px
+}
+.card h3{margin:0 0 10px}
+.card p{line-height:1.8;color:#555;font-size:13px}
+.stat{font-size:25px;font-weight:bold;color:#a17d32}
+.section-title{
+ font-size:19px;margin:20px 0 12px;
+ border-right:4px solid #c5a45a;padding-right:10px
+}
+select,input{
+ padding:11px;border:1px solid #ccc;border-radius:6px;
+ background:white;font-family:inherit;max-width:100%
+}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.action{
+ background:#171717;color:white;border:0;padding:11px 16px;
+ border-radius:6px;cursor:pointer;font-family:inherit
+}
+.action:hover{background:#a17d32}
+.pills{display:flex;gap:7px;flex-wrap:wrap;margin:15px 0}
+.pills button{
+ background:#e8e8e8;border:0;padding:10px 14px;
+ border-radius:6px;cursor:pointer;font-family:inherit
+}
+.pills button.active{background:#171717;color:white}
+.table-wrap{overflow-x:auto;background:white;border-radius:8px}
+table{width:100%;border-collapse:collapse;min-width:550px}
+th,td{padding:12px 10px;text-align:center;border-bottom:1px solid #eee;font-size:13px}
+th{background:#171717;color:white}
+tr:hover td{background:#faf7ef}
+.team-name{text-align:right;font-weight:bold}
+.club-logo{width:23px;height:23px;object-fit:contain;vertical-align:middle;margin-left:7px}
+.match{
+ display:flex;align-items:center;justify-content:space-between;
+ gap:10px;background:white;border:1px solid #eee;
+ border-radius:8px;padding:13px;margin:8px 0
+}
+.match-teams{font-weight:bold;flex:1;text-align:center}
+.score{font-size:19px;font-weight:bold;white-space:nowrap}
+.match-info{font-size:11px;color:#777;text-align:center}
+.notice{
+ background:#fff8e8;border:1px solid #ead8a9;
+ padding:13px;border-radius:7px;line-height:1.8;
+ color:#5b4a22;font-size:13px;margin:12px 0
+}
+.error{background:#fff0f0;color:#a00000;padding:13px;border-radius:7px}
 .loading{padding:20px;text-align:center;color:#777}
-footer{background:#111;color:#ddd;text-align:center;padding:28px;line-height:2;margin-top:35px;font-size:12px}
-footer strong{font-size:19px;color:white}
-@media(max-width:550px){
-.brand{font-size:23px}.hero{padding:22px}
-.match{gap:5px;padding:12px 7px}
-.match-team{font-size:10px}.match-score{font-size:15px}
+a{color:#8b6925}
+footer{
+ background:#111;color:#aaa;text-align:center;
+ padding:25px;margin-top:35px;font-size:12px;line-height:2
+}
+@media(max-width:600px){
+ .logo{font-size:22px}
+ .hero h1{font-size:21px}
+ nav button{padding:10px 12px;font-size:12px}
+ .match{flex-wrap:wrap}
 }
 </style>
 </head>
+
 <body>
 
 <header>
-<div class="top">
-<div>
-<div class="brand">FOOTBALL <span>360</span></div>
-<div class="tagline">THE WORLD OF FOOTBALL</div>
-</div>
-<input class="search" id="search" placeholder="جست‌وجوی لیگ یا بازیکن..." oninput="searchSite()">
-</div>
+ <div class="header-inner">
+  <div class="logo">FOOTBALL <span>360</span></div>
+  <div class="subtitle">THE WORLD OF FOOTBALL | اخبار، آمار و مسابقات فوتبال</div>
+ </div>
 </header>
 
-<nav id="nav">
-<button class="active" onclick="showPage('home',this)">خانه</button>
-<button onclick="showPage('matches',this)">مسابقات</button>
-<button onclick="showPage('leagues',this)">لیگ‌ها</button>
-<button onclick="showPage('stats',this)">آمار بازیکنان</button>
-<button onclick="showPage('teams',this)">تیم‌ها</button>
-<button onclick="showPage('transfers',this)">انتقالات</button>
-<button onclick="showPage('fifa',this)">FIFA DAYS</button>
-<button onclick="showPage('videos',this)">ویدئو و پخش زنده</button>
-<button onclick="showPage('news',this)">اخبار</button>
+<nav id="mainNav">
+ <button class="active" data-page="home">HOME</button>
+ <button data-page="matches">MATCHES</button>
+ <button data-page="leagues">LEAGUES</button>
+ <button data-page="stats">PLAYER STATS</button>
+ <button data-page="teams">TEAMS</button>
+ <button data-page="transfers">TRANSFERS</button>
+ <button data-page="fifa">FIFA DAYS</button>
+ <button data-page="videos">VIDEO</button>
+ <button data-page="news">NEWS</button>
 </nav>
 
-<main>
+<main class="container">
 
-<!-- HOME -->
 <section class="page active" id="home">
-<div class="hero">
-<div class="label">WELCOME TO FOOTBALL 360</div>
-<h1>تمام دنیای فوتبال <span style="color:#aaa">در یک جا</span></h1>
-<p>نتایج مسابقات، لیگ‌ها، آمار بازیکنان، نقل‌وانتقالات، اخبار و ویدئوهای فوتبال جهان.</p>
-</div>
-
-<div class="section">
-<div class="section-title"><h2>لیگ‌های برتر</h2><span>TOP COMPETITIONS</span></div>
-<div class="grid" id="homeLeagues"></div>
-</div>
-
-<div class="section">
-<div class="section-title"><h2>آخرین مسابقات</h2><span>MATCH CENTER</span></div>
-<div id="homeMatches" class="empty">برای مشاهده نتایج، وارد بخش مسابقات شو.</div>
-</div>
-
-<div class="section">
-<div class="section-title"><h2>فوتبال تلویزیونی</h2><span>FOOTBALL TV</span></div>
-<div class="video-grid">
-<div class="video-card"><div class="play">▶</div>پخش زنده مسابقات</div>
-<div class="video-card"><div class="play">▶</div>خلاصه بازی‌ها</div>
-<div class="video-card"><div class="play">▶</div>بازپخش گل‌ها</div>
-</div>
-</div>
+ <div class="hero">
+  <h1>WELCOME TO FOOTBALL 360</h1>
+  <p>دنیای فوتبال در یک سایت؛ نتایج، لیگ‌ها، تیم‌ها، بازیکنان و مسابقات ملی.</p>
+ </div>
+ <div class="grid">
+  <div class="card"><h3>LEAGUES</h3><p>جدول لیگ‌ها، نتایج و گلزنان برتر</p><button class="action" onclick="showPage('leagues')">مشاهده لیگ‌ها</button></div>
+  <div class="card"><h3>FIFA DAYS</h3><p>بخش اختصاصی فوتبال ملی و مسابقات بین‌المللی</p><button class="action" onclick="showPage('fifa')">مشاهده فیفادی</button></div>
+  <div class="card"><h3>PLAYER STATS</h3><p>آمار گل‌ها و پاس گل‌های بازیکنان</p><button class="action" onclick="showPage('stats')">آمار بازیکنان</button></div>
+  <div class="card"><h3>TEAMS</h3><p>اطلاعات و تیم‌های حاضر در مسابقات</p><button class="action" onclick="showPage('teams')">مشاهده تیم‌ها</button></div>
+ </div>
+ <h2 class="section-title">LATEST MATCHES</h2>
+ <div id="homeMatches" class="loading">برای دریافت مسابقات وارد بخش MATCHES شوید.</div>
 </section>
 
-<!-- MATCHES -->
 <section class="page" id="matches">
-<div class="page-heading"><h2>نتایج و برنامه مسابقات</h2>LIVE SCORES & FIXTURES</div>
-<select class="select" id="matchLeague" onchange="loadMatches()"></select>
-<div class="pills">
-<button class="pill active" onclick="setMatchType('ALL',this)">همه</button>
-<button class="pill" onclick="setMatchType('LIVE',this)">زنده</button>
-<button class="pill" onclick="setMatchType('SCHEDULED',this)">برنامه آینده</button>
-<button class="pill" onclick="setMatchType('FINISHED',this)">نتایج نهایی</button>
-</div>
-<div id="matchesData" class="loading">در حال آماده‌سازی...</div>
+ <div class="hero"><h1>MATCHES</h1><p>مسابقات، نتایج و بازی‌های آینده</p></div>
+ <div class="controls">
+  <select id="matchLeague">
+   <option value="PL">Premier League</option>
+   <option value="PD">La Liga</option>
+   <option value="CL">Champions League</option>
+   <option value="BL1">Bundesliga</option>
+   <option value="SA">Serie A</option>
+   <option value="FL1">Ligue 1</option>
+  </select>
+  <button class="action" onclick="loadMatches()">نمایش مسابقات</button>
+ </div>
+ <div class="pills">
+  <button class="active" onclick="setMatchFilter('ALL',this)">همه</button>
+  <button onclick="setMatchFilter('SCHEDULED',this)">بازی‌های آینده</button>
+  <button onclick="setMatchFilter('FINISHED',this)">پایان‌یافته</button>
+  <button onclick="setMatchFilter('LIVE',this)">زنده</button>
+ </div>
+ <div id="matchesResult" class="loading">یک لیگ انتخاب کن.</div>
 </section>
 
-<!-- LEAGUES -->
 <section class="page" id="leagues">
-<div class="page-heading"><h2>لیگ‌ها و رقابت‌های فوتبال جهان</h2>ALL LEAGUES</div>
-<div class="grid" id="allLeagues"></div>
-<div class="section">
-<div class="section-title"><h2 id="leagueTitle">اطلاعات لیگ</h2></div>
-<select class="select" id="leagueSelect" onchange="selectLeague(this.value)"></select>
-<div class="pills">
-<button class="pill active" onclick="leagueTab('standings',this)">جدول رده‌بندی</button>
-<button class="pill" onclick="leagueTab('matches',this)">مسابقات</button>
-<button class="pill" onclick="leagueTab('scorers',this)">گل‌زنان</button>
-<button class="pill" onclick="leagueTab('assists',this)">پاسورها</button>
-</div>
-<div id="leagueData" class="loading">یک لیگ انتخاب کن.</div>
-</div>
+ <div class="hero"><h1>LEAGUES</h1><p>لیگ‌های معتبر فوتبال جهان</p></div>
+ <div class="controls">
+  <select id="leagueSelect" onchange="loadLeagueData()">
+   <option value="PL">Premier League</option>
+   <option value="PD">La Liga</option>
+   <option value="CL">UEFA Champions League</option>
+   <option value="BL1">Bundesliga</option>
+   <option value="SA">Serie A</option>
+   <option value="FL1">Ligue 1</option>
+   <option value="DED">Eredivisie</option>
+   <option value="PPL">Primeira Liga</option>
+   <option value="ELC">Championship</option>
+  </select>
+  <button class="action" onclick="loadLeagueData()">بروزرسانی</button>
+ </div>
+ <div class="pills" id="leagueTabs">
+  <button class="active" data-tab="standings">TABLE</button>
+  <button data-tab="matches">MATCHES</button>
+  <button data-tab="scorers">TOP SCORERS</button>
+ </div>
+ <div id="leagueResult" class="loading">در حال آماده‌سازی...</div>
 </section>
 
-<!-- STATS -->
 <section class="page" id="stats">
-<div class="page-heading"><h2>آمار بازیکنان</h2>PLAYER STATISTICS</div>
-<select class="select" id="statsLeague" onchange="loadPlayerStats()"></select>
-<div class="pills">
-<button class="pill active" onclick="statsTab('goals',this)">۱۰ گل‌زن برتر</button>
-<button class="pill" onclick="statsTab('assists',this)">۱۰ پاسور برتر</button>
-</div>
-<div id="statsData" class="loading">یک لیگ انتخاب کن.</div>
-<div class="notice">آمار کارت‌ها، دقایق بازی و سایر جزئیات فقط در صورتی نمایش داده می‌شوند که سرویس آماری آن‌ها را ارائه کند.</div>
+ <div class="hero"><h1>PLAYER STATS</h1><p>آمار بازیکنان و گلزنان لیگ‌ها</p></div>
+ <div class="controls">
+  <select id="statsLeague">
+   <option value="PD">La Liga</option>
+   <option value="PL">Premier League</option>
+   <option value="CL">Champions League</option>
+   <option value="BL1">Bundesliga</option>
+   <option value="SA">Serie A</option>
+   <option value="FL1">Ligue 1</option>
+  </select>
+  <button class="action" onclick="loadStats()">نمایش آمار</button>
+ </div>
+ <div id="statsResult" class="loading">لیگ را انتخاب کن.</div>
 </section>
 
-<!-- TEAMS -->
 <section class="page" id="teams">
-<div class="page-heading"><h2>تیم‌های فوتبال جهان</h2>CLUBS & NATIONAL TEAMS</div>
-<div class="feature">
-<div class="card"><h3>باشگاه‌ها</h3><p>ترکیب، مربی، ورزشگاه، نتایج و افتخارات باشگاه‌ها.</p></div>
-<div class="card"><h3>تیم‌های ملی</h3><p>فهرست بازیکنان، مسابقات و اطلاعات کشورها.</p></div>
-<div class="card"><h3>Real Madrid</h3><p>صفحه اختصاصی رئال مادرید در میان باشگاه‌های جهان.</p></div>
-</div>
-<div class="empty">برای نمایش فهرست کامل بازیکنان و مشخصات فردی باید سرویس اطلاعات تیم‌ها و بازیکنان متصل شود.</div>
+ <div class="hero"><h1>TEAMS</h1><p>باشگاه‌ها و تیم‌های حاضر در لیگ‌ها</p></div>
+ <div class="controls">
+  <select id="teamsLeague">
+   <option value="PD">La Liga</option>
+   <option value="PL">Premier League</option>
+   <option value="CL">Champions League</option>
+   <option value="BL1">Bundesliga</option>
+   <option value="SA">Serie A</option>
+   <option value="FL1">Ligue 1</option>
+  </select>
+  <button class="action" onclick="loadTeams()">نمایش تیم‌ها</button>
+ </div>
+ <div id="teamsResult" class="loading">یک لیگ انتخاب کن.</div>
 </section>
 
-<!-- TRANSFERS -->
 <section class="page" id="transfers">
-<div class="page-heading"><h2>بازار نقل‌وانتقالات</h2>TRANSFER CENTER</div>
-<div class="pills">
-<button class="pill active" onclick="transferTab('official',this)">انتقالات رسمی</button>
-<button class="pill" onclick="transferTab('rumours',this)">شایعات</button>
-</div>
-<div id="transferData" class="empty">
-اطلاعات نقل‌وانتقالات هنوز به منبع خبری و آماری متصل نشده است.
-</div>
-<div class="notice">انتقالات رسمی و شایعات باید از منابع جداگانه و معتبر دریافت شوند. هیچ شایعه‌ای به‌عنوان انتقال قطعی نمایش داده نمی‌شود.</div>
+ <div class="hero"><h1>TRANSFERS</h1><p>آخرین اخبار نقل‌وانتقالات فوتبال</p></div>
+ <div class="notice">برای نمایش خودکار نقل‌وانتقالات، این بخش به منبع خبری اختصاصی نیاز دارد. اطلاعات تأییدنشده به‌عنوان انتقال قطعی نمایش داده نمی‌شود.</div>
+ <div class="grid">
+  <div class="card"><h3>TRANSFER NEWS</h3><p>اخبار و شایعات نقل‌وانتقالات</p></div>
+  <div class="card"><h3>OFFICIAL DEALS</h3><p>انتقالات رسمی و تأییدشده</p></div>
+  <div class="card"><h3>RUMOURS</h3><p>گزارش‌ها و شایعات رسانه‌ها</p></div>
+ </div>
 </section>
 
-<!-- FIFA DAYS -->
 <section class="page" id="fifa">
-<div class="page-heading"><h2>FIFA DAYS | مسابقات ملی</h2></div>
-<div class="feature">
-<div class="card"><h3>مسابقات ملی</h3><p>برنامه و نتایج بازی‌های ملی.</p></div>
-<div class="card"><h3>دعوت‌شدگان</h3><p>فهرست بازیکنان دعوت‌شده به تیم ملی.</p></div>
-<div class="card"><h3>مقدماتی جام جهانی</h3><p>جدول گروه‌ها و نتایج انتخابی.</p></div>
-<div class="card"><h3>بازی‌های دوستانه</h3><p>مسابقات دوستانه کشورها.</p></div>
-</div>
-<div class="empty">برای اطلاعات کامل مسابقات ملی به منبع داده‌های بین‌المللی نیاز داریم.</div>
+ <div class="hero"><h1>FIFA DAYS</h1><p>دنیای تیم‌های ملی و مسابقات بین‌المللی</p></div>
+ <div class="grid">
+  <div class="card"><h3>WORLD CUP</h3><p>مسابقات جام جهانی</p><button class="action" onclick="loadInternational('WC')">نمایش مسابقات</button></div>
+  <div class="card"><h3>EURO</h3><p>مسابقات قهرمانی اروپا</p><button class="action" onclick="loadInternational('EC')">نمایش مسابقات</button></div>
+ </div>
+ <h2 class="section-title">INTERNATIONAL MATCHES</h2>
+ <div id="fifaResult" class="loading">برای مشاهده مسابقات، یکی از رقابت‌ها را انتخاب کن.</div>
+ <div class="notice">
+  توجه: این بخش فعلاً مسابقات رقابت‌های بین‌المللی موجود در API را نمایش می‌دهد. بازی‌های دوستانه و برنامه دقیق هر پنجره فیفادی هنوز به منبع داده جداگانه نیاز دارند.
+ </div>
+ <h2 class="section-title">NATIONAL TEAMS</h2>
+ <div class="grid">
+  <div class="card">🇦🇷 Argentina</div>
+  <div class="card">🇧🇷 Brazil</div>
+  <div class="card">🇫🇷 France</div>
+  <div class="card">🏴 England</div>
+  <div class="card">🇪🇸 Spain</div>
+  <div class="card">🇩🇪 Germany</div>
+  <div class="card">🇵🇹 Portugal</div>
+  <div class="card">🇳🇱 Netherlands</div>
+  <div class="card">🇮🇹 Italy</div>
+  <div class="card">🇮🇷 Iran</div>
+ </div>
 </section>
 
-<!-- VIDEOS -->
 <section class="page" id="videos">
-<div class="page-heading"><h2>FOOTBALL TV | ویدئو و پخش زنده</h2></div>
-<div class="video-grid">
-<div class="video-card">
-<div class="play">▶</div><strong>پخش زنده مسابقات</strong>
-<p>تماشای مسابقات از پخش‌کنندگان رسمی</p>
-<a href="https://www.uefa.com/" target="_blank">منبع رسمی UEFA</a>
-</div>
-<div class="video-card">
-<div class="play">▶</div><strong>خلاصه مسابقات</strong>
-<p>خلاصه و صحنه‌های مهم بازی‌ها</p>
-<a href="https://www.youtube.com/@UEFA" target="_blank">کانال رسمی UEFA</a>
-</div>
-<div class="video-card">
-<div class="play">▶</div><strong>گل‌های مسابقات</strong>
-<p>ویدئوهای گل‌ها و لحظات مهم</p>
-<a href="https://www.youtube.com/@LaLiga" target="_blank">کانال رسمی LaLiga</a>
-</div>
-<div class="video-card">
-<div class="play">▶</div><strong>فوتبال باشگاهی</strong>
-<p>ویدئوهای رسمی باشگاه‌ها</p>
-<a href="https://www.realmadrid.com/" target="_blank">وب‌سایت رئال مادرید</a>
-</div>
-</div>
-<div class="notice" style="margin-top:15px">پخش کامل زنده مسابقات نیازمند مجوز پخش و قرارداد با ارائه‌دهنده رسمی است. این سایت فعلاً لینک منابع رسمی را نمایش می‌دهد و پخش زنده اختصاصی ندارد.</div>
+ <div class="hero"><h1>FOOTBALL VIDEO</h1><p>ویدئوها و لحظات فوتبال</p></div>
+ <div class="grid">
+  <div class="card"><h3>UEFA</h3><p>ویدئوهای رسمی لیگ قهرمانان اروپا</p><a href="https://www.uefa.com/" target="_blank">مشاهده وب‌سایت UEFA</a></div>
+  <div class="card"><h3>REAL MADRID</h3><p>ویدئوهای رسمی رئال مادرید</p><a href="https://www.realmadrid.com/" target="_blank">مشاهده وب‌سایت</a></div>
+  <div class="card"><h3>LALIGA</h3><p>اخبار و ویدئوهای رسمی لالیگا</p><a href="https://www.laliga.com/" target="_blank">مشاهده وب‌سایت</a></div>
+ </div>
+ <div class="notice">پخش زنده کامل مسابقات و ویدئوهای گل‌ها فقط از طریق سرویس‌های دارای مجوز پخش قابل ارائه است.</div>
 </section>
 
-<!-- NEWS -->
 <section class="page" id="news">
-<div class="page-heading"><h2>اخبار فوتبال جهان</h2>WORLD FOOTBALL NEWS</div>
-<div class="feature">
-<div class="card"><h3>اخبار لیگ‌ها</h3><p>اخبار مسابقات و تیم‌ها.</p></div>
-<div class="card"><h3>نقل‌وانتقالات</h3><p>خبرهای رسمی و شایعات بازار.</p></div>
-<div class="card"><h3>اخبار بازیکنان</h3><p>آخرین اخبار بازیکنان فوتبال.</p></div>
-</div>
-<div class="empty">برای انتشار اخبار روز باید منبع خبری به سایت متصل شود.</div>
+ <div class="hero"><h1>FOOTBALL NEWS</h1><p>اخبار فوتبال جهان</p></div>
+ <div class="notice">برای انتشار خودکار اخبار روز فوتبال، باید یک منبع خبری معتبر به سایت متصل شود. در حال حاضر این بخش آماده اتصال به منبع خبر است.</div>
 </section>
 
 </main>
 
 <footer>
-<strong>FOOTBALL 360</strong><br>
-THE WORLD OF FOOTBALL<br>
-All Football In One Place
+ FOOTBALL 360 | THE WORLD OF FOOTBALL<br>
+ Football statistics and information
 </footer>
 
 <script>
-/* API PROXY */
-const API="https://royal-news-api-2026.hazhiralizadeh3039.workers.dev";
+const API = "https://royal-news-api-2026.hazhiralizadeh3039.workers.dev";
+let currentLeagueTab = "standings";
+let currentMatches = [];
+let matchFilter = "ALL";
 
-const leagues=[
-{code:"CL",name:"Champions League",fa:"لیگ قهرمانان اروپا"},
-{code:"PL",name:"Premier League",fa:"لیگ برتر انگلیس"},
-{code:"PD",name:"La Liga",fa:"لالیگا اسپانیا"},
-{code:"BL1",name:"Bundesliga",fa:"بوندس‌لیگا آلمان"},
-{code:"SA",name:"Serie A",fa:"سری آ ایتالیا"},
-{code:"FL1",name:"Ligue 1",fa:"لیگ یک فرانسه"},
-{code:"DED",name:"Eredivisie",fa:"اردیویسه هلند"},
-{code:"PPL",name:"Primeira Liga",fa:"لیگ پرتغال"},
-{code:"ELC",name:"Championship",fa:"چمپیونشیپ انگلیس"},
-{code:"WC",name:"World Cup",fa:"جام جهانی"},
-{code:"EC",name:"European Championship",fa:"جام ملت‌های اروپا"},
-{code:"BSA",name:"Brazilian Serie A",fa:"سری آ برزیل"}
-];
+function showPage(page){
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ document.querySelectorAll("#mainNav button").forEach(b=>b.classList.remove("active"));
+ const section=document.getElementById(page);
+ if(section) section.classList.add("active");
+ const btn=document.querySelector(`#mainNav button[data-page="${page}"]`);
+ if(btn) btn.classList.add("active");
 
-let currentLeague="PD";
-let currentMatchType="ALL";
-let currentLeagueTab="standings";
-let currentStatsTab="goals";
-let currentTransferTab="official";
-
-function showPage(id,btn){
-document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
-document.getElementById(id).classList.add("active");
-document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));
-btn.classList.add("active");
-window.scrollTo({top:0,behavior:"smooth"});
-if(id==="matches")loadMatches();
-if(id==="stats")loadPlayerStats();
+ if(page==="leagues") loadLeagueData();
+ if(page==="matches") loadMatches();
+ if(page==="stats") loadStats();
+ if(page==="teams") loadTeams();
 }
 
-function logo(code){
-return "https://crests.football-data.org/"+code+".png";
-}
-
-function leagueCard(l){
-return `<div class="card league-card" onclick="openLeague('${l.code}')">
-<img class="league-logo" src="${logo(l.code)}" alt="${l.name}" onerror="this.style.display='none'">
-<h3>${l.fa}</h3><p>${l.name}</p>
-</div>`;
-}
-
-function renderLeagues(){
-document.getElementById("homeLeagues").innerHTML=leagues.slice(0,6).map(leagueCard).join("");
-document.getElementById("allLeagues").innerHTML=leagues.map(leagueCard).join("");
-["matchLeague","leagueSelect","statsLeague"].forEach(id=>{
-document.getElementById(id).innerHTML=leagues.map(l=>
-`<option value="${l.code}">${l.fa}</option>`).join("");
+document.querySelectorAll("#mainNav button").forEach(btn=>{
+ btn.addEventListener("click",()=>showPage(btn.dataset.page));
 });
-document.getElementById("matchLeague").value=currentLeague;
-document.getElementById("leagueSelect").value=currentLeague;
-document.getElementById("statsLeague").value=currentLeague;
-}
-renderLeagues();
+
+document.querySelectorAll("#leagueTabs button").forEach(btn=>{
+ btn.addEventListener("click",()=>{
+  document.querySelectorAll("#leagueTabs button").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  currentLeagueTab=btn.dataset.tab;
+  loadLeagueData();
+ });
+});
 
 async function api(path){
-const response=await fetch(API+path);
-if(!response.ok)throw new Error("API error "+response.status);
-return await response.json();
+ const response=await fetch(API+path);
+ if(!response.ok) throw new Error("API Error: "+response.status);
+ return await response.json();
 }
 
-function openLeague(code){
-currentLeague=code;
-document.getElementById("leagueSelect").value=code;
-document.getElementById("leagueTitle").textContent=
-leagues.find(l=>l.code===code).fa;
-leagueTab(currentLeagueTab,document.querySelector("#leagues .pills button"));
-const btn=[...document.querySelectorAll("nav button")].find(b=>b.textContent==="لیگ‌ها");
-showPage("leagues",btn);
-loadLeagueData();
+function errorBox(error){
+ return `<div class="error">دریافت اطلاعات ناموفق بود.<br>${escapeHTML(error.message||"خطای نامشخص")}<br>ممکن است این لیگ در اشتراک API پشتیبانی نشود یا Worker نیاز به بررسی داشته باشد.</div>`;
 }
 
-function selectLeague(code){
-currentLeague=code;
-document.getElementById("leagueTitle").textContent=
-leagues.find(l=>l.code===code).fa;
-loadLeagueData();
+function escapeHTML(value){
+ return String(value??"").replace(/[&<>"']/g,c=>({
+ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ }[c]));
 }
 
-function leagueTab(tab,btn){
-currentLeagueTab=tab;
-document.querySelectorAll("#leagues .pills button").forEach(b=>b.classList.remove("active"));
-if(btn)btn.classList.add("active");
-loadLeagueData();
+function logo(url){
+ if(!url) return "";
+ return `<img class="club-logo" src="${escapeHTML(url)}" onerror="this.style.display='none'">`;
 }
 
 async function loadLeagueData(){
-const box=document.getElementById("leagueData");
-box.innerHTML='<div class="loading">در حال دریافت اطلاعات...</div>';
-try{
-let data;
-if(currentLeagueTab==="standings"){
-data=await api("/competitions/"+currentLeague+"/standings");
-const table=data.standings?.find(x=>x.type==="TOTAL")?.table||data.standings?.[0]?.table||[];
-box.innerHTML=table.length?`
-<div class="table-wrap"><table>
-<tr><th>رتبه</th><th>تیم</th><th>بازی</th><th>برد</th><th>مساوی</th><th>باخت</th><th>گل زده</th><th>گل خورده</th><th>امتیاز</th></tr>
-${table.map(t=>`<tr>
-<td>${t.position??"-"}</td><td style="text-align:right">${t.team?.name||"-"}</td>
-<td>${t.playedGames??"-"}</td><td>${t.won??"-"}</td><td>${t.draw??"-"}</td>
-<td>${t.lost??"-"}</td><td>${t.goalsFor??"-"}</td><td>${t.goalsAgainst??"-"}</td>
-<td><b>${t.points??"-"}</b></td></tr>`).join("")}
-</table></div>`:"جدول رده‌بندی برای این رقابت در دسترس نیست.";
-}
-else if(currentLeagueTab==="matches"){
-data=await api("/competitions/"+currentLeague+"/matches");
-box.innerHTML=renderMatches(data.matches||[]);
-}
-else{
-data=await api("/competitions/"+currentLeague+"/scorers");
-let list=data.scorers||[];
-if(currentLeagueTab==="assists"){
-list=list.filter(p=>p.assists!==null&&p.assists!==undefined)
-.sort((a,b)=>b.assists-a.assists);
-}else{
-list=list.sort((a,b)=>(b.goals||0)-(a.goals||0));
-}
-box.innerHTML=renderPlayers(list.slice(0,10),currentLeagueTab);
-}
-}catch(e){
-box.innerHTML='<div class="empty">دریافت اطلاعات ممکن نشد. ممکن است این لیگ در اشتراک API فعلی پشتیبانی نشود یا محدودیت درخواست وجود داشته باشد.</div>';
-}
+ const code=document.getElementById("leagueSelect").value;
+ const box=document.getElementById("leagueResult");
+ box.innerHTML='<div class="loading">در حال دریافت اطلاعات لیگ...</div>';
+
+ try{
+  if(currentLeagueTab==="standings"){
+   const data=await api(`/competitions/${code}/standings`);
+   const standings=data.standings||[];
+   const table=standings.find(s=>s.type==="TOTAL")||standings[0];
+   if(!table||!table.table) throw new Error("جدول رده‌بندی در پاسخ API وجود ندارد.");
+   box.innerHTML=`
+    <h2 class="section-title">LEAGUE TABLE</h2>
+    <div class="table-wrap"><table>
+     <thead><tr><th>#</th><th>TEAM</th><th>MP</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>PTS</th></tr></thead>
+     <tbody>${table.table.map(t=>`
+      <tr>
+       <td>${t.position??"-"}</td>
+       <td class="team-name">${logo(t.team?.crest)}${escapeHTML(t.team?.name)}</td>
+       <td>${t.playedGames??"-"}</td><td>${t.won??"-"}</td>
+       <td>${t.draw??"-"}</td><td>${t.lost??"-"}</td>
+       <td>${t.goalsFor??"-"}</td><td>${t.goalsAgainst??"-"}</td>
+       <td>${t.goalDifference??"-"}</td><td><b>${t.points??"-"}</b></td>
+      </tr>`).join("")}</tbody>
+    </table></div>`;
+  }
+  else if(currentLeagueTab==="matches"){
+   const data=await api(`/competitions/${code}/matches`);
+   renderMatchList(data.matches||[],box);
+  }
+  else if(currentLeagueTab==="scorers"){
+   const data=await api(`/competitions/${code}/scorers`);
+   renderScorers(data.scorers||[],box);
+  }
+ }catch(e){box.innerHTML=errorBox(e);}
 }
 
-function renderMatches(matches){
-if(!matches.length)return '<div class="empty">مسابقه‌ای برای نمایش وجود ندارد.</div>';
-return matches.map(m=>{
-const home=m.homeTeam?.name||"تیم میزبان";
-const away=m.awayTeam?.name||"تیم مهمان";
-const status=m.status||"";
-const score=m.score?.fullTime||{};
-let result=(score.home??"-")+" - "+(score.away??"-");
-let date=m.utcDate?new Date(m.utcDate).toLocaleString("fa-IR"):"";
-return `<div class="match">
-<div class="match-team">${home}</div>
-<div class="match-score">${result}<small>${status} | ${date}</small></div>
-<div class="match-team">${away}</div>
-</div>`;
-}).join("");
+function renderScorers(players,box){
+ if(!players.length){box.innerHTML="<p>اطلاعات گلزنان موجود نیست.</p>";return;}
+ box.innerHTML=`
+ <h2 class="section-title">TOP SCORERS</h2>
+ <div class="table-wrap"><table>
+ <thead><tr><th>#</th><th>PLAYER</th><th>TEAM</th><th>GOALS</th><th>ASSISTS</th></tr></thead>
+ <tbody>${players.slice(0,10).map((p,i)=>`
+ <tr><td>${i+1}</td><td>${escapeHTML(p.player?.name)}</td>
+ <td>${escapeHTML(p.team?.name)}</td>
+ <td><b>${p.goals??"-"}</b></td><td>${p.assists??"-"}</td></tr>
+ `).join("")}</tbody></table></div>`;
 }
 
-function setMatchType(type,btn){
-currentMatchType=type;
-document.querySelectorAll("#matches .pill").forEach(b=>b.classList.remove("active"));
-btn.classList.add("active");
-loadMatches();
+function renderMatchList(matches,box){
+ if(!matches.length){box.innerHTML="<p>مسابقه‌ای برای نمایش وجود ندارد.</p>";return;}
+ box.innerHTML=matches.slice(0,50).map(m=>`
+ <div class="match">
+  <div class="match-teams">${logo(m.homeTeam?.crest)}${escapeHTML(m.homeTeam?.name)}</div>
+  <div><div class="score">${m.score?.fullTime?.home??"-"} : ${m.score?.fullTime?.away??"-"}</div>
+  <div class="match-info">${escapeHTML(m.status)}<br>${m.utcDate?new Date(m.utcDate).toLocaleDateString("fa-IR"):""}</div></div>
+  <div class="match-teams">${logo(m.awayTeam?.crest)}${escapeHTML(m.awayTeam?.name)}</div>
+ </div>`).join("");
 }
 
 async function loadMatches(){
-const code=document.getElementById("matchLeague").value||currentLeague;
-const box=document.getElementById("matchesData");
-box.innerHTML='<div class="loading">در حال دریافت مسابقات...</div>';
-try{
-const data=await api("/competitions/"+code+"/matches");
-let list=data.matches||[];
-if(currentMatchType!=="ALL")list=list.filter(m=>m.status===currentMatchType);
-box.innerHTML=renderMatches(list);
-}catch(e){
-box.innerHTML='<div class="empty">اطلاعات مسابقات دریافت نشد. دسترسی API این رقابت را بررسی کن.</div>';
-}
-}
-
-function renderPlayers(players,type){
-if(!players.length)return '<div class="empty">آمار این بازیکنان در اطلاعات دریافتی وجود ندارد.</div>';
-return players.map((p,i)=>{
-const team=p.team?.name||"";
-const goals=p.goals??"-";
-const assists=p.assists??"-";
-const value=type==="assists"?assists:goals;
-return `<div class="player-row">
-<div class="rank">${i+1}</div>
-<div class="player-info"><strong>${p.player?.name||"بازیکن"}</strong><small>${team}</small></div>
-<div class="stat">${value}</div>
-</div>`;
-}).join("");
+ const code=document.getElementById("matchLeague").value;
+ const box=document.getElementById("matchesResult");
+ box.innerHTML='<div class="loading">در حال دریافت مسابقات...</div>';
+ try{
+  const data=await api(`/competitions/${code}/matches`);
+  currentMatches=data.matches||[];
+  renderFilteredMatches(box);
+  document.getElementById("homeMatches").innerHTML=
+   currentMatches.slice(0,5).map(m=>`
+    <div class="match"><div class="match-teams">${escapeHTML(m.homeTeam?.name)}</div>
+    <div class="score">${m.score?.fullTime?.home??"-"} : ${m.score?.fullTime?.away??"-"}</div>
+    <div class="match-teams">${escapeHTML(m.awayTeam?.name)}</div></div>`).join("")||"مسابقه‌ای موجود نیست.";
+ }catch(e){box.innerHTML=errorBox(e);}
 }
 
-function statsTab(tab,btn){
-currentStatsTab=tab;
-document.querySelectorAll("#stats .pill").forEach(b=>b.classList.remove("active"));
-btn.classList.add("active");
-loadPlayerStats();
+function setMatchFilter(filter,button){
+ matchFilter=filter;
+ document.querySelectorAll("#matches .pills button").forEach(b=>b.classList.remove("active"));
+ button.classList.add("active");
+ renderFilteredMatches(document.getElementById("matchesResult"));
 }
 
-async function loadPlayerStats(){
-const code=document.getElementById("statsLeague").value||currentLeague;
-const box=document.getElementById("statsData");
-box.innerHTML='<div class="loading">در حال دریافت آمار بازیکنان...</div>';
-try{
-const data=await api("/competitions/"+code+"/scorers");
-let list=data.scorers||[];
-if(currentStatsTab==="assists"){
-list=list.filter(p=>p.assists!==null&&p.assists!==undefined)
-.sort((a,b)=>b.assists-a.assists);
-}else{
-list=list.sort((a,b)=>(b.goals||0)-(a.goals||0));
-}
-box.innerHTML=renderPlayers(list.slice(0,10),currentStatsTab);
-}catch(e){
-box.innerHTML='<div class="empty">آمار بازیکنان این لیگ در API فعلی در دسترس نیست.</div>';
-}
+function renderFilteredMatches(box){
+ let list=currentMatches;
+ if(matchFilter==="LIVE") list=list.filter(m=>["LIVE","IN_PLAY","PAUSED"].includes(m.status));
+ if(matchFilter==="FINISHED") list=list.filter(m=>m.status==="FINISHED");
+ if(matchFilter==="SCHEDULED") list=list.filter(m=>["SCHEDULED","TIMED"].includes(m.status));
+ renderMatchList(list,box);
 }
 
-function transferTab(tab,btn){
-currentTransferTab=tab;
-document.querySelectorAll("#transfers .pill").forEach(b=>b.classList.remove("active"));
-btn.classList.add("active");
-document.getElementById("transferData").innerHTML=
-tab==="official"
-? "انتقالات رسمی هنوز به منبع داده‌های نقل‌وانتقالات متصل نشده‌اند."
-: "شایعات نقل‌وانتقالات هنوز به منبع خبری متصل نشده‌اند.";
+async function loadStats(){
+ const code=document.getElementById("statsLeague").value;
+ const box=document.getElementById("statsResult");
+ box.innerHTML='<div class="loading">در حال دریافت آمار...</div>';
+ try{
+  const data=await api(`/competitions/${code}/scorers`);
+  renderScorers(data.scorers||[],box);
+ }catch(e){box.innerHTML=errorBox(e);}
 }
 
-function searchSite(){
-const q=document.getElementById("search").value.toLowerCase().trim();
-if(!q)return;
-const found=leagues.find(l=>l.fa.toLowerCase().includes(q)||l.name.toLowerCase().includes(q));
-if(found)openLeague(found.code);
+async function loadTeams(){
+ const code=document.getElementById("teamsLeague").value;
+ const box=document.getElementById("teamsResult");
+ box.innerHTML='<div class="loading">در حال دریافت تیم‌ها...</div>';
+ try{
+  const data=await api(`/competitions/${code}/standings`);
+  const standings=data.standings||[];
+  const table=standings.find(s=>s.type==="TOTAL")||standings[0];
+  const teams=table?.table||[];
+  if(!teams.length) throw new Error("فهرست تیم‌ها موجود نیست.");
+  box.innerHTML='<div class="grid">'+teams.map(t=>`
+   <div class="card">
+    ${logo(t.team?.crest)}
+    <h3>${escapeHTML(t.team?.name)}</h3>
+    <p>رتبه در لیگ: ${t.position??"-"}</p>
+    <p>امتیاز: <b>${t.points??"-"}</b></p>
+   </div>`).join("")+'</div>';
+ }catch(e){box.innerHTML=errorBox(e);}
+}
+
+async function loadInternational(code){
+ const box=document.getElementById("fifaResult");
+ box.innerHTML='<div class="loading">در حال دریافت مسابقات بین‌المللی...</div>';
+ try{
+  const data=await api(`/competitions/${code}/matches`);
+  renderMatchList(data.matches||[],box);
+ }catch(e){box.innerHTML=errorBox(e);}
 }
 </script>
+
 </body>
 </html>
